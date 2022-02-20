@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // let number = 19;
+      // while (number != 10) {
+      //   console.log(number);
+      //   number--;
+      // }
+
+      // let num = 0;
+      // while (num <= 100) {
+      //   if (num % 2 === 0) {
+      //     console.log(num);
+      //   }
+      //   if (num > 100) {
+      //     break;
+      //   }
+      //   num++;
+      // }
+      // let num = '7.5';
+      // console.log(
+      //   ~~num);
+      // let sum = 0;
+      // let array = ['1', '2', '3', '4'];
+      // for (let i = 0; i < array.length; i++) {
+      //   console.log(array[i]);
+      //   sum += ~~array[i];
+      // }
+      // console.log(sum);
+
+      // let name = 'eylon';
+      // let regex = /[a-z]/g;
+      // if (name.match(regex)) console.log('true');
+
+      let lotto = [];
+      while (lotto.length < 7) {
+        let num = Math.floor(Math.random() * 32);
+        if (!lotto.includes(num)) lotto.push(num);
+      }
+      console.log(lotto);
+    </script>
+  </body>
+</html>
