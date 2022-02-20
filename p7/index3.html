@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- <button id="button" style="background-color: red;" onclick="changeMe()">change me</button> -->
+  <!-- <button id="background" onclick="color()">Background</button> -->
+  <button id="button1" style="position:absolute" onclick="clicker()">size</button>
+  <script>
+    // const changeMe = () => {
+    //   const btn = document.getElementById('button');
+    //   btn.style.backgroundColor === "red" ? btn.style.backgroundColor = "blue" : btn.style.backgroundColor = "red"
+    // }
+    const getRandNum = () => {
+      return Math.floor(Math.random() * 255)
+    }
+    const getRandPer = () => {
+      return Math.floor(Math.random() * 100)
+    }
+    // const color = () => {
+    //   const body = document.querySelector('body');
+    //   body.style.backgroundColor = `rgb(${getRandNum()}, ${getRandNum()}, ${getRandNum()}`;
+    // 
+    const button1 = document.getElementById('button1');
+    const clicker = () => {
+      if (button1.style.padding === '40px') {
+        button1.style.padding = '70px'
+
+      } else {
+        button1.style.padding = '40px';
+      }
+      button1.style.backgroundColor = `rgb(${getRandNum()}, ${getRandNum()}, ${getRandNum()}`;
+      button1.style.left = `${getRandPer()}%`
+      button1.style.top = `${getRandPer()}%`
+    }
+  </script>
+</body>
+
+</html>
