@@ -10,11 +10,13 @@
 
 <body id="body">
   <input type="color" name="color" id="color">
+  <button type="submit" onclick="changeColor()">Change</button>
 
   <script>
     const colorInput = document.getElementById('color');
     const body = document.getElementById('body');
-    const change = setInterval(changeColor, 200);
+
+    // setInterval(changeColor, 200);
 
     function changeColor() {
       body.style.backgroundColor = colorInput.value

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+    let canvas = document.getElementById("canvas"),
+      ctx = canvas.getContext("2d");
+
+    canvas.width = canvas.height = 500;
+
+    let targetX = 0,
+      targetY = 0,
+      x = 10,
+      y = 10,
+      velX = 0,
+      velY = 0,
+      speed = 2;
+
+    function update() {
+      let tx = targetX - x,
+        ty = targetY - y,
+        dist = Math.sqrt(tx * tx + ty * ty),
+        rad = Math.atan2(ty, tx),
+        angle = rad / Math.PI * 180;
+
+      velX = (tx / dist) * speed,
+        velY = (ty / dist) * speed;
+
+      x += velX
+      y += velY
+
+      ctx.clearRect(0, 0, 500, 500);
+      ctx.beginPath();
+      ctx.arc(x, y, 10, 0, Math.PI * 2);
+      ctx.fill();
+
+      setTimeout(update, 10);
+    }
+
+    update();
+
+    canvas.addEventListener("mousemove", function(e) {
+      targetX = e.pageX;
+      targetY = e.pageY;
+    });
+  </script>
+</body>
+
+</html>
