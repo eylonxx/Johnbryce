@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+
+  <input type="text" id="x">
+  <input type="text" id="y">
+  <input type="text" id="width">
+  <input type="text" id="height">
+  <input type="color" id="color">
+  <button onclick="draw()">Draw</button>
+
+  <script>
+    function draw() {
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+      ctx.rect(x.value, y.value, width.value, height.value);
+      ctx.fill();
+      setTimeout(function() {
+        ctx.clearRect(x.value, y.value, width.value, height.value)
+      }, 3000)
+    }
+  </script>
+</body>
+
+</html>
