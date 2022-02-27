@@ -24,9 +24,13 @@
       const ctx = canvas.getContext('2d');
       ctx.rect(x.value, y.value, width.value, height.value);
       ctx.fill();
-      setTimeout(function() {
-        ctx.clearRect(x.value, y.value, width.value, height.value)
-      }, 3000)
+      setTimeout(clearer, 3000)
+    }
+
+    function clearer() {
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(x.value, y.value, width.value, height.value)
     }
   </script>
 </body>
