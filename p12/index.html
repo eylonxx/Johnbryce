@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+  <title>Document</title>
+</head>
+
+<body onload="">
+  <!-- Header -->
+  <div>
+    <h1>My task board</h1>
+  </div>
+  <!-- Form -->
+  <div>
+    <form action="" onsubmit="">
+      <input id="taskText" type="text">
+      <input id="taskDate" type="date">
+      <input id="taskTime" type="time">
+      <button type="reset">Reset</button>
+      <button onclick="saveAndSubmitData()" type="button">Submit task</button>
+    </form>
+
+  </div>
+  <!-- Tasks -->
+  <div id="taskContainer">
+
+  </div>
+
+
+
+  <script>
+    let counter = 0;
+    if ((localStorage.getItem('counter'))) {
+      counter = localStorage.getItem('counter')
+    } else {
+      localStorage.setItem('counter', 0);
+    }
+    const taskText = document.querySelector('#taskText');
+    const taskDate = document.querySelector('#taskDate');
+    const taskTime = document.querySelector('#taskTime');
+
+    const saveAndSubmitData = () => {
+      if (!(taskText.value === '' || taskDate.value === '' || taskTime.value === '')) {
+        localStorage.setItem('counter', ++counter);
+        const task = {
+          taskText: taskText.value,
+          taskDate: taskDate.value,
+          taskTime: taskTime.value,
+          taskId: counter
+        };
+        localStorage.setItem(`${task.taskId}`, JSON.stringify(task));
+        createNewTask(task)
+      }
+    }
+
+    const createNewTask = (task) => {
+      const taskContainer = document.querySelector('#taskContainer');
+      const taskNote = document.createElement('div');
+      taskNote.innerHTML = `
+        <div class="card task" style="width: 12rem;">
+            <div class="card-body">
+                <p class="card-text">${task.taskText}</p>
+                <p class="card-text">${task.taskDate}</p>
+                <p class="card-text">${task.taskTime}</p>
+             </div>
+        </div>`
+      taskContainer.append(taskNote);
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+
+</html>
