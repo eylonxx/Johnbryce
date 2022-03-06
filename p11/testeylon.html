@@ -18,6 +18,7 @@
     <div class="border p-2">
       <h2 class="text-center mb-3">Add a product</h2>
       <form class="d-flex flex-column gap-2" action="">
+
         <label for="itemName">Product name:</label>
         <input id="itemName" type="text">
 
@@ -32,8 +33,10 @@
           <option value="Snacks">Snacks</option>
           <option value="Basic">Basic</option>
         </select>
+
         <label for="productImg">Add an image:</label>
         <input type="text" id="productImg">
+
         <button class="btn btn-primary" onclick="addProduct()" type="reset">Add product</button>
       </form>
     </div>
@@ -53,14 +56,16 @@
 
     const cart = [] //cart is an array of objects
     const addProduct = () => { //create an object for item
-      const items = {
-        name: itemName.value,
-        price: price.value,
-        itemType: itemType.value,
-        image: productImg.value
+      if (!(itemName.value === '' || price.value === '' || productImg.value === '')) {
+        const items = {
+          name: itemName.value,
+          price: price.value,
+          itemType: itemType.value,
+          image: productImg.value
+        }
+        cart.push(items); //add object to the cart array
+        displayCart(); //calls the display cart function, which displays the cart on screen
       }
-      cart.push(items); //add object to the cart array
-      displayCart(); //calls the display cart function, which displays the cart on screen
     }
 
     //display items in cart
