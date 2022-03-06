@@ -13,7 +13,6 @@
 .task {
   transition: opacity 500ms;
   will-change: opacity;
-  overflow: auto;
 }
 .task.faded-out {
   opacity: 0;
@@ -28,10 +27,16 @@ i {
 
 #delete-icon {
   position: absolute;
-  top: 10%;
+  top: 6%;
   left: 90%;
 }
 #taskFormContainer {
   background-image: url(./imgs/formbg.jpg);
   height: 100px;
+}
+.task-text {
+  height: 155px;
+  font-size: 1.2rem;
+  overflow: auto;
+  margin-top: 35px;
 }
