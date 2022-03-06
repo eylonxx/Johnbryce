@@ -1,8 +1,19 @@
+.bg {
+  background-image: url(./imgs/tile.jpg);
+  max-width: 1366px;
+}
+
+.note-bg {
+  background: url(./imgs/notebg.png);
+  width: 180px;
+  height: 250px;
+  mix-blend-mode: multiply;
+}
+
 .task {
-  width: 10rem;
-  height: 12rem;
   transition: opacity 500ms;
   will-change: opacity;
+  overflow: auto;
 }
 .task.faded-out {
   opacity: 0;
@@ -13,4 +24,14 @@ i {
 .task:hover span i {
   opacity: 1;
   cursor: pointer;
+}
+
+#delete-icon {
+  position: absolute;
+  top: 10%;
+  left: 90%;
+}
+#taskFormContainer {
+  background-image: url(./imgs/formbg.jpg);
+  height: 100px;
 }

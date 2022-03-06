@@ -13,26 +13,29 @@
 </head>
 
 <body onload="loadTasks()">
-  <!-- Header -->
-  <div>
-    <h1>My task board</h1>
-  </div>
-  <!-- Form -->
-  <div>
-    <form action="" onsubmit="">
-      <input id="taskText" type="text">
-      <input id="taskDate" type="date">
-      <input id="taskTime" type="time">
-      <button type="reset">Reset</button>
-      <button onclick="saveAndSubmitData()" type="button">Submit task</button>
-    </form>
+  <div class="bg pb-3 d-flex flex-column justify-content-center align-items-center border border-5">
+    <!-- Header -->
+    <div>
+      <div class="headerBg mt-4 mb-4">
+        <img src="./imgs/title.png" alt="">
+      </div>
+    </div>
+    <!-- Form -->
+    <div id="taskFormContainer" class="d-flex align-items-center p-5">
+      <form id="taskForm" action="">
+        <input id="taskText" type="text">
+        <input id="taskDate" type="date">
+        <input id="taskTime" type="time">
+        <button type="reset">Reset</button>
+        <button onclick="saveAndSubmitData()" type="button">Submit task</button>
+      </form>
 
-  </div>
-  <!-- Tasks -->
-  <div id="taskContainer" class="d-flex flex-wrap gap-2">
+    </div>
+    <!-- Tasks -->
+    <div id="taskContainer" class="d-flex flex-wrap gap-2">
 
+    </div>
   </div>
-
 
 
 
@@ -72,12 +75,12 @@
 
       taskNote.setAttribute('id', `task${task.taskId}`);
       taskNote.innerHTML = `
-      <div class="card" style="width: 10rem; height:12rem">
-    <div class="card-body d-flex flex-column overflow-auto p-1">
-      <span onclick="removeTask(${task.taskId})" class="position-absolute end-0 top-0"><i class="bi bi-x"></i></span>
-      <p class="card-text pt-3">${taskText}</p>
-      <span class="card-text mt-auto">${taskDate}</span>
-      <span class="card-text mt-0">${taskTime}</span>
+      <div class="card note-bg">
+    <div class="card-body d-flex flex-column task p-0">
+      <span id="delete-icon" onclick="removeTask(${task.taskId})"><i class="bi bi-x"></i></span>
+      <p class="mt-5 ps-2">${taskText}</p>
+      <span class="card-text mt-auto ps-2">${taskDate}</span>
+      <span class="card-text mt-0 ps-2 pb-1">${taskTime}</span>
     </div>
   </div>`
       taskContainer.append(taskNote);
