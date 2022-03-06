@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- HTML markup -->
+  <div class="d-flex flex-column align-items-center justify-content center mt-5">
+
+    <div>
+      <h2 class="text-center mb-3">Add a product</h2>
+      <form class="d-flex flex-column gap-2" action="">
+        <label for="itemName">Product name:</label>
+        <input id="itemName" type="text">
+
+        <label for="itemPrice">Price:</label>
+        <input id="price" type="number">
+
+        <label for="itemType">Item type:</label>
+        <select name="type" id="itemType">
+          <option value="Drinks">Drinks</option>
+          <option value="Meat">Meat</option>
+          <option value="Dairy">Dairy</option>
+          <option value="Snacks">Snacks</option>
+          <option value="Basic">Basic</option>
+        </select>
+        <label for="productImg">Add an image:</label>
+        <input type="text" id="productImg">
+        <button class="btn btn-primary" onclick="addProduct()" type="reset">Add product</button>
+      </form>
+    </div>
+
+    <div class="mt-5">
+      <h2 class="mb-3 text-center">My cart</h2>
+      <div id="cart"></div>
+    </div>
+
+  </div>
+
+
+  <script>
+    const cartDiv = document.querySelector('#cart');
+
+    const cart = [] //cart is an array of objects
+    const addProduct = () => { //create an object for item
+      const items = {
+        name: itemName.value,
+        price: price.value,
+        itemType: itemType.value,
+        image: productImg.value
+      }
+      cart.push(items); //add object to the cart array
+      displayCart(); //calls the display cart function, which displays the cart on screen
+    }
+
+    //display items in cart
+    const displayCart = () => {
+      cartDiv.innerHTML = ''; //removes items and resets the display
+      for (let i = 0; i < cart.length; i++) { //adds items to the display
+        cartDiv.innerHTML +=
+          `<div class="card" style="width: 18rem; display:inline-block;">
+            <img src="${cart[i].image}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">${cart[i].name}</h5>
+                 <p class="card-text">Price: ${cart[i].price}</p>
+                 <p class="card-text">Item type: ${cart[i].itemType}</p>
+                 <a href="#" onclick="removeItem(${i})" class="btn btn-primary">Delete</a>
+            </div>
+        </div>`
+      }
+    }
+
+    const removeItem = (index) => { //removes the specific item from the cart
+      cart.splice(index, 1);
+      displayCart(); //calls display cart function to show items again
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+
+</html>
