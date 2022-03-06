@@ -1,6 +1,11 @@
 .task {
   width: 10rem;
   height: 12rem;
+  transition: opacity 500ms;
+  will-change: opacity;
+}
+.task.faded-out {
+  opacity: 0;
 }
 i {
   opacity: 0;
