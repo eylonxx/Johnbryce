@@ -1,0 +1,11 @@
+.task {
+  width: 10rem;
+  height: 12rem;
+}
+i {
+  opacity: 0;
+}
+.task:hover span i {
+  opacity: 1;
+  cursor: pointer;
+}
