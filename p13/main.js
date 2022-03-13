@@ -60,3 +60,42 @@ const myFunc1v2 = () => {
     return (num1 + num2 + num3) / 3;
   });
 };
+
+// 6th exercise
+
+const showTime = () => {
+  setInterval(() => {
+    let date = new Date();
+    let formattedDate = d.toLocaleTimeString();
+    myp.innerHTML = `The time is: ${formattedDate}`;
+  }, 1000);
+};
+
+// 7th exercise
+
+function findUserLocation() {
+  navigator.geolocation.getCurrentPosition(
+    (location) => {
+      const { longitude, latitude } = location.coords;
+      myp.innerHTML = `${latitude}, ${longitude}`;
+    },
+    (error) => {
+      console.log(error);
+    },
+    { enableHighAccuracy: true }
+  );
+}
+
+// 8th exercise
+
+const colorChange = () => {
+  bg.style.backgroundColor = 'red';
+  paintMe();
+  bg.style.backgroundColor = 'blue';
+};
+
+const paintMe = () => {
+  setTimeout(() => {
+    bg.style.backgroundColor = 'green';
+  }, 3000);
+};
