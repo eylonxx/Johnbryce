@@ -27,7 +27,6 @@ const bg = document.querySelector('body');
 
 // amazing((c1, c2, c3) => {
 //   const rand123 = Math.floor(Math.random() * 3 + 1).toString();
-//   console.log(`c${rand123}`);
 //   bg.style.backgroundColor = eval(`c${rand123}`);
 //   return eval(`c${rand123}`);
 // });
