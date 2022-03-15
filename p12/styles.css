@@ -1,6 +1,7 @@
 .bg {
   background-image: url(./imgs/tile.jpg);
   max-width: 1366px;
+  height: 100vh;
 }
 
 .note-bg {
