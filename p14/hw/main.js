@@ -274,3 +274,28 @@
 //     .then((pizza) => console.log(pizza))
 //     .catch(() => console.log('oh no'));
 // };
+
+//question #7
+// const generateStrongPasswordAsync = () => {
+//   return new Promise((resolve, reject) => {
+//     const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+//     let newPass = '';
+//     for (let i = 0; i <= 5; i++) {
+//       let randomNum = Math.floor(Math.random() * chars.length);
+//       newPass += chars[randomNum];
+//     }
+//     if (
+//       newPass.split('').some((letter) => letter <= 'z' && letter >= 'a') &&
+//       newPass.split('').some((letter) => letter <= 'Z' && letter >= 'A') &&
+//       newPass.split('').some((letter) => letter <= '9' && letter >= '0')
+//     ) {
+//       resolve(newPass);
+//     } else reject(newPass);
+//   });
+// };
+
+// const test = () => {
+//   generateStrongPasswordAsync()
+//     .then((pass) => console.log('yay', pass))
+//     .catch((pass) => console.log('oh no', pass));
+// };
