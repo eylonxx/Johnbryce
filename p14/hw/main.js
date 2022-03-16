@@ -118,3 +118,159 @@
 
 //   myp.innerHTML = `<span style="color: rgb(${newColor()}, ${newColor()}, ${newColor()})">${getTime()}</span>`;
 // }, 1000);
+
+//promises
+
+// question #1
+// const generate7BoomAfterDelayAsync = (min, max) => {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       randomNum = Math.floor(Math.random() * (max - min) + min);
+//       if (randomNum % 7 === 0 || randomNum % 10 === 7) {
+//         resolve(randomNum);
+//       } else {
+//         reject(randomNum);
+//       }
+//     }, 1000);
+//   });
+// };
+
+// const test = () => {
+//   generate7BoomAfterDelayAsync(27, 30)
+//     .then((randomNum) => {
+//       console.log('success', randomNum);
+//     })
+//     .catch((randomNum) => {
+//       console.log('failed', randomNum);
+//     });
+// };
+
+//question #2
+// const isPrime = (num) => {
+//   for (let i = 2, s = Math.sqrt(num); i <= s; i++) if (num % i === 0) return false;
+//   return true;
+// };
+
+// const generatePrimeNumberAfterDelayAsync = (min, max) => {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       const randomNum = Math.floor(Math.random() * (max - min) + min);
+//       if (isPrime(randomNum)) {
+//         resolve(randomNum);
+//       } else {
+//         reject(randomNum);
+//       }
+//     }, 1000);
+//   });
+// };
+
+// const test = () => {
+//   generatePrimeNumberAfterDelayAsync(0, 100)
+//     .then((randomNum) => {
+//       console.log('yay', randomNum);
+//     })
+//     .catch((randomNum) => {
+//       console.log('oh no', randomNum);
+//     });
+// };
+
+//question #3
+
+// const generateCuteAnimalAfterDelayAsync = () => {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       const animals = ['Kitty', 'Puppy', 'Bunny', 'Budgie', 'Scorpion', 'Spider', 'Cockroach'];
+//       randomAnimal = animals[Math.floor(Math.random() * animals.length)];
+//       if (
+//         randomAnimal === 'Kitty' ||
+//         randomAnimal === 'Puppy' ||
+//         randomAnimal === 'Bunny' ||
+//         randomAnimal === 'Budgie'
+//       ) {
+//         resolve(randomAnimal);
+//       } else reject(randomAnimal);
+//     }, 1000);
+//   });
+// };
+// const test = () => {
+//   generateCuteAnimalAfterDelayAsync()
+//     .then((randomAnimal) => console.log('cute', randomAnimal))
+//     .catch((randomAnimal) => console.log('ugly', randomAnimal));
+// };
+
+//question #4
+// const generateWorkingDayAfterDelayAsync = () => {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+//       const chosenDay = weekDays[Math.floor(Math.random() * weekDays.length)];
+//       if (weekDays.slice(0, 5).includes(chosenDay)) {
+//         resolve(chosenDay);
+//       } else reject(chosenDay);
+//     }, 1000);
+//   });
+// };
+
+// const test = () => {
+//   generateWorkingDayAfterDelayAsync()
+//     .then((day) => {
+//       console.log('lets go to work!', day);
+//     })
+//     .catch((day) => {
+//       console.log('work onth e weekened odededqf', day);
+//     });
+// };
+
+//question #5
+// const getArrayFromServerAsync = (size) => {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       const randomNum = Math.floor(Math.random() * 10);
+//       if (randomNum % 2 === 0) {
+//         resolve(
+//           Array(size)
+//             .fill()
+//             .map(() => Math.floor(Math.random() * 50))
+//         );
+//       } else {
+//         reject();
+//       }
+//     }, 1000);
+//   });
+// };
+
+// const test = () => {
+//   getArrayFromServerAsync(20)
+//     .then((arr) => {
+//       console.log(arr);
+//     })
+//     .catch(() => {
+//       console.log('cant do that');
+//     });
+// };
+
+//question #6
+// const getPizzaFromServerAsync = () => {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       randomNum = Math.floor(Math.random() * 40 + 10);
+
+//       if (randomNum % 2 === 0) {
+//         const pizza = {
+//           diameter: randomNum,
+//           price: randomNum,
+//           toppings: randomNum,
+//         };
+//         resolve(pizza);
+//       } else {
+//         reject();
+//       }
+//     }, 1000);
+//   });
+// };
+
+// const test = () => {
+//   getPizzaFromServerAsync()
+//     .then((pizza) => console.log(pizza))
+//     .catch(() => console.log('oh no'));
+// };
