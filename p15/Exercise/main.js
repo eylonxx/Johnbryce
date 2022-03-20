@@ -19,32 +19,52 @@
 //   });
 // };
 
-const test = async () => {
-  try {
-    const res = await getRandomStrongPasswordAfterDelay();
-    console.log(res);
-    if (res) {
-      try {
-        const res2 = await getRandomStrongPasswordAfterDelay();
-        console.log(res2);
-      } catch {
-        alert('xd');
-      }
-    }
-  } catch {
-    alert('xd');
-  }
+// const test = async () => {
+//   try {
+//     const res = await getRandomStrongPasswordAfterDelay();
+//     console.log(res);
+//     if (res) {
+//       try {
+//         const res2 = await getRandomStrongPasswordAfterDelay();
+//         console.log(res2);
+//       } catch {
+//         alert('xd');
+//       }
+//     }
+//   } catch {
+//     alert('xd');
+//   }
+// };
+
+// const getRandomStrongPasswordAfterDelay = () => {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       const password = '' + Math.floor(Math.random() * 100000000);
+//       if (password.length >= 6) {
+//         resolve(password);
+//       } else {
+//         reject(password);
+//       }
+//     }, 1000);
+//   });
+// };
+
+//// fetch
+
+const toDos = async () => {
+  const res = await fetch('https://jsonplaceholder.typicode.com/todos');
+  const parsedRes = await res.json();
+
+  parsedRes.forEach((el) => {
+    myul.innerHTML += `<li>${el.title}</li>`;
+  });
 };
 
-const getRandomStrongPasswordAfterDelay = () => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const password = '' + Math.floor(Math.random() * 100000000);
-      if (password.length >= 6) {
-        resolve(password);
-      } else {
-        reject(password);
-      }
-    }, 1000);
-  });
+const comment = async () => {
+  const res = await fetch('https://jsonplaceholder.typicode.com/comments');
+  const parsedRes = await res.json();
+  myRow.innerHTML = '';
+  for (let content of parsedRes) {
+    myRow.innerHTML += `<tr><td>${content.name}</td> <td>${content.email}</td> <td>${content.body}</td></tr>`;
+  }
 };
