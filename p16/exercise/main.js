@@ -2,8 +2,8 @@ const test = () => {
   try {
     let final = factorGrade(105);
     console.log(final);
-  } catch {
-    console.log('hillel');
+  } catch (err) {
+    console.log(err);
   }
 };
 
