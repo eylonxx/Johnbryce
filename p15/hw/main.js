@@ -75,12 +75,12 @@
 
 //q#7
 
-const getWeather = async () => {
-  let chosenCity = users.value;
-  const rawData = await fetch(
-    `http://api.weatherstack.com/current?access_key=384a17fc3bc6ea2d3ade650114164c0f&query=${chosenCity}`
-  );
-  const parsedData = await rawData.json();
-  myp.innerHTML = `${parsedData.current.temperature} <img src="${parsedData.current.weather_icons[0]}">`;
-  console.log(parsedData);
-};
+// const getWeather = async () => {
+//   let chosenCity = users.value;
+//   const rawData = await fetch(
+//     `http://api.weatherstack.com/current?access_key=384a17fc3bc6ea2d3ade650114164c0f&query=${chosenCity}`
+//   );
+//   const parsedData = await rawData.json();
+//   myp.innerHTML = `${parsedData.current.temperature} <img src="${parsedData.current.weather_icons[0]}">`;
+//   console.log(parsedData);
+// };
