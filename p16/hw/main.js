@@ -93,3 +93,26 @@ console.log(pizza);
 // for (let one of pizza) console.log(one);
 
 //b
+// let chosen = pizza.find((p) => p.toppings === 0);
+
+//c
+// let chosen = pizza.find((p) => p.price < 30);
+
+//d
+// let chosen = pizza.filter((p) => p.diameter < 20);
+
+//e
+// let chosen = pizza.filter((p) => p.price > 80);
+
+//f
+// let chosen = pizza.filter((p) => p.toppings === 0);
+
+//g
+// let chosen = pizza.findIndex((p) => p.slices === 6);
+
+//h
+// let chosen = pizza.map((p) => console.log(p.diameter / 2));
+
+//i
+let chosen = pizza.map((p) => (p.vat = p.price * 1.17));
+console.log(chosen);
