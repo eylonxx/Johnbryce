@@ -45,7 +45,7 @@ $(function () {
       success: (photos) => {
         console.log(photos);
         for (let photo of photos) {
-          let tr = `<tr><td>${photo.id}</td> <td>${photo.title}</td> <td>${photo.url}</td> <td><img src="${photo.thumbnailUrl}"></td></tr>`;
+          let tr = `<tr><td>${photo.id}</td> <td>${photo.title}</td> <td><a href="${photo.url}">link</a></td> <td><img src="${photo.thumbnailUrl}"></td></tr>`;
           $('tbody').append(tr);
         }
       },
