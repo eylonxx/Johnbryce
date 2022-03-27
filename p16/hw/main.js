@@ -114,5 +114,21 @@ console.log(pizza);
 // let chosen = pizza.map((p) => console.log(p.diameter / 2));
 
 //i
-let chosen = pizza.map((p) => (p.vat = p.price * 1.17));
-console.log(chosen);
+// let chosen = pizza.map((p) => {
+//   return { ...p, vat: p.price * 1.17 };
+// });
+
+//j
+// let chosen = pizza.reduce((acc, curr) => {
+//   return acc + curr.price;
+// }, 0);
+
+//k
+// let chosen = pizza.reduce((acc, curr) => {
+//   return acc.price > curr.price ? acc : curr;
+// }, pizza[0].price);
+// console.log(chosen.price);
+//l
+// let chosen = pizza.reduce((acc, curr) => {
+//   return acc.price > curr.price ? acc : curr;
+// }, pizza[0].price);
