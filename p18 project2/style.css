@@ -3,6 +3,11 @@
   font-size: 1.25rem;
 }
 .card-cell {
-  width: 15rem;
+  width: 20rem;
   height: 15rem;
+  overflow-x: none;
+  overflow-y: auto;
+}
+.wrapper {
+  max-width: 1366px;
 }
