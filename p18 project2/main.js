@@ -22,10 +22,11 @@ $(function () {
           <h5 class="card-title">${data[i].name}</h5>
           <p class="card-text">${data[i].id}</p>
           <p>
-            <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-              More info </a>
+          <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample${i}" aria-expanded="false" aria-controls="collapseExample">
+          More info
+        </button>
           </p>
-          <div class="collapse" id="collapseExample">
+          <div class="collapse" id="collapseExample${i}">
             <div class="card card-body">
               Some coin info </div>
           </div>
