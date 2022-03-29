@@ -5,26 +5,9 @@ $(function () {
       storeData(response);
     },
   });
-
-  $('.moreInfoBtn').click(function () {
-    console.log('hi');
-    moreInfo();
-  });
-
-  const moreInfo = () => {
-    $.ajax({
-      url: 'https://api.coingecko.com/api/v3/coins/bitcoin',
-      success: function (response) {
-        storeMoreInfoData(response);
-      },
-    });
-  };
-
-  const storeMoreInfoData = (rawData) => {
-    const data = rawData;
-    console.log(data);
-  };
-
+  //   $("section").on("dblclick", "div", function () {
+  //     $(this).append(":-)");
+  // });
   const storeData = (rawData) => {
     let data = rawData;
     const cardContainer = document.querySelector('.card-container');
@@ -56,4 +39,21 @@ $(function () {
       cardContainer.append(newDiv);
     }
   };
+});
+const moreInfo = () => {
+  $.ajax({
+    url: 'https://api.coingecko.com/api/v3/coins/',
+    success: function (response) {
+      storeMoreInfoData(response);
+    },
+  });
+};
+
+const storeMoreInfoData = (rawData) => {
+  const data = rawData;
+  console.log(data);
+};
+
+$(document).on('click', '.moreInfoBtn', function () {
+  moreInfo();
 });
