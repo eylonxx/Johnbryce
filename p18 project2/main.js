@@ -35,8 +35,9 @@ $(function () {
           <button class="btn btn-primary moreInfoBtn" id="${
             data[i].id
           }" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample${i}" aria-expanded="false" aria-controls="collapseExample">
+          More Info
           </button>
-          <div class="collapse" id="collapseExample${i}">
+          <div class="collapse collapseInfo" id="collapseExample${i}">
                <div class="card card-body moreInfoCard">
                
                </div>
@@ -54,7 +55,7 @@ $(function () {
   };
   const addCollapseEventListener = () => {
     const moreInfoBtn = document.querySelectorAll('.moreInfoBtn');
-    const collapseInfo = document.querySelectorAll('.collapse');
+    const collapseInfo = document.querySelectorAll('.collapseInfo');
     const moreInfoCard = document.querySelectorAll('.moreInfoCard');
 
     collapseInfo.forEach((item, i) => {
