@@ -53,60 +53,53 @@ $(function () {
     }
     addCollapseEventListener();
   };
+
   const addCollapseEventListener = () => {
     const moreInfoBtn = document.querySelectorAll('.moreInfoBtn');
     const collapseInfo = document.querySelectorAll('.collapseInfo');
     const moreInfoCard = document.querySelectorAll('.moreInfoCard');
+
+    const displayCardInfo = (card, data) => {
+      card.innerHTML = `
+    <img class="coin-image" src="${data.image}">
+     <p>${data.usd}$</p>
+      <p>${data.eur}€</p>
+     <p>${data.ils}₪</p>`;
+    };
+
+    const checkTwoMins = (date) => Math.floor(Math.abs(new Date() - date) / 1000 / 60) > 2;
+
+    const storeMoreInfoData = (rawData, id) => {
+      localStorage.setItem(
+        id,
+        JSON.stringify({
+          usd: rawData.market_data.current_price.usd,
+          eur: rawData.market_data.current_price.eur,
+          ils: rawData.market_data.current_price.ils,
+          image: rawData.image.small,
+          updated: new Date(),
+        })
+      );
+    };
 
     collapseInfo.forEach((item, i) => {
       item.addEventListener('show.bs.collapse', function () {
         const id = moreInfoBtn[i]['id'];
         let data = JSON.parse(localStorage.getItem(id));
         if (!data || checkTwoMins(new Date(data.updated))) {
-          console.log('hi');
           $.ajax({
             url: `https://api.coingecko.com/api/v3/coins/${id}`,
             success: function (response) {
-              storeMoreInfoData(response);
+              storeMoreInfoData(response, id);
               data = JSON.parse(localStorage.getItem(id));
-              console.log(moreInfoCard[i]);
-              moreInfoCard[i].innerHTML = `
-              <img class="coin-image" src="${data.image}">
-               <p>${data.usd}$</p>
-                <p>${data.eur}€</p>
-               <p>${data.ils}₪</p>`;
+              displayCardInfo(moreInfoCard[i], data);
             },
           });
-
-          const storeMoreInfoData = (rawData) => {
-            localStorage.setItem(
-              id,
-              JSON.stringify({
-                usd: rawData.market_data.current_price.usd,
-                eur: rawData.market_data.current_price.eur,
-                ils: rawData.market_data.current_price.ils,
-                image: rawData.image.small,
-                updated: new Date(),
-              })
-            );
-          };
         } else {
-          moreInfoCard[i].innerHTML = `
-          <img class="coin-image" src="${data.image}">
-          <p>${data.usd}$</p>
-          <p>${data.eur}€</p>
-          <p>${data.ils}₪</p>`;
-          console.log(moreInfoCard[i]);
+          displayCardInfo(moreInfoCard[i], data);
         }
       });
     });
-  };
-
-  const checkTwoMins = (date) => {
-    const diff = Math.abs(new Date() - date);
-    const minutes = Math.floor(diff / 1000 / 60);
-    console.log(minutes);
-    return minutes > 2;
   };
 
   searchInput.addEventListener('keyup', () => {
@@ -117,7 +110,6 @@ $(function () {
         return item.toLowerCase().includes(input.toLowerCase());
       });
     }
-
     renderResults(results);
   });
 
@@ -135,19 +127,4 @@ $(function () {
     searchWrapper.classList.add('show');
     resultsWrapper.innerHTML = `<ul>${content}</ul>`;
   };
-
-  // showevent > check if in local storage, if not >save to localstorage, else nothing
 });
-
-const moreInfo = () => {
-  $.ajax({
-    url: 'https://api.coingecko.com/api/v3/coins/',
-    success: function (response) {
-      storeMoreInfoData(response);
-    },
-  });
-};
-
-const storeMoreInfoData = (rawData) => {
-  const data = rawData;
-};
