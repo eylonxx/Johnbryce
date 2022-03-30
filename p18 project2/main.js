@@ -1,14 +1,11 @@
 $(function () {
   const data = $.ajax({
     url: 'https://api.coingecko.com/api/v3/coins/',
-
     success: (response) => {
       storeData(response);
     },
   });
-  //   $("section").on("dblclick", "div", function () {
-  //     $(this).append(":-)");
-  // });
+
   const searchableContent = [];
   const searchInput = document.querySelector('.searchBox');
   const searchWrapper = document.querySelector('.searchBoxWrapper');
@@ -19,7 +16,6 @@ $(function () {
 
     const cardContainer = document.querySelector('.card-container');
     for (let i = 0; i < data.length; i++) {
-      // console.log(data[i]);
       let newDiv = document.createElement('div');
       newDiv.innerHTML = `
       <div class="card card-cell">
@@ -39,7 +35,9 @@ $(function () {
           </button>
           <div class="collapse collapseInfo" id="collapseExample${i}">
                <div class="card card-body moreInfoCard">
-               
+               <div class="spinner-border" role="status">
+                   <span class="visually-hidden">Loading...</span>
+                </div>
                </div>
           </div>
 
