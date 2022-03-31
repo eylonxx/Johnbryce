@@ -24,7 +24,7 @@ $(function () {
             <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
             <label class="form-check-label" for="flexSwitchCheckDefault"></label>
           </div>
-          <h5 class="card-title">${data[i].symbol.toUpperCase()}</h5>
+          <h5 id="${data[i].symbol}" class="card-title">${data[i].symbol.toUpperCase()}</h5>
           <p class="card-text">${data[i].id}</p>
           <p class="">
 
@@ -110,7 +110,6 @@ $(function () {
     }
     renderResults(results);
   });
-
   const renderResults = (results) => {
     if (!results.length) {
       return searchWrapper.classList.remove('show');
@@ -118,7 +117,7 @@ $(function () {
 
     let content = results
       .map((item) => {
-        return `<li><a href="#algorand">${item}</a></li>`;
+        return `<li><a href="#${item}">${item}</a></li>`;
       })
       .join('');
 
