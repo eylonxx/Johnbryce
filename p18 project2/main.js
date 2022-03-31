@@ -118,7 +118,7 @@ $(function () {
 
     let content = results
       .map((item) => {
-        return `<li><a href="#">${item}</a></li>`;
+        return `<li><a href="#algorand">${item}</a></li>`;
       })
       .join('');
 

@@ -1,0 +1,16 @@
+div {
+  border: 1px solid black;
+  width: 50px;
+  height: 50px;
+}
+.mySection {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.red {
+  background-color: red;
+}
+.blue {
+  background-color: blue;
+}
