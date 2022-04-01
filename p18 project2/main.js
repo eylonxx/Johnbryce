@@ -4,7 +4,7 @@ const createSearchbox = () => {
   <div class="searchBoxContainer ms-auto">
   <div class="searchBoxWrapper">
     <input class="searchBox" type="text">
-    <button id="searchBtn" class="serachButton">Search</button>
+    <button id="searchBtn" class="searchButton">Search</button>
     <div class="results">
     </div>
   </div>
@@ -15,7 +15,6 @@ const createSearchbox = () => {
 const loadMain = () => {
   $('.realtime-container').html('');
   $('.about-container').html('');
-  createSearchbox();
   const data = $.ajax({
     url: 'https://api.coingecko.com/api/v3/coins/',
     success: (response) => {
@@ -68,6 +67,7 @@ const loadMain = () => {
     addCollapseEventListener();
   };
 
+  //moreinfo
   const addCollapseEventListener = () => {
     const moreInfoBtn = document.querySelectorAll('.moreInfoBtn');
     const collapseInfo = document.querySelectorAll('.collapseInfo');
@@ -116,6 +116,7 @@ const loadMain = () => {
     });
   };
 
+  //searchbox
   const searchableContent = [];
   const searchInput = document.querySelector('.searchBox');
   const searchWrapper = document.querySelector('.searchBoxWrapper');
@@ -129,8 +130,20 @@ const loadMain = () => {
         return item.toLowerCase().includes(input.toLowerCase());
       });
     }
+
+    //on searchbutton click go to first result
+    const searchBtnClick = (results) => {
+      document.querySelector(`#${results[0]}`).scrollIntoView();
+    };
+
+    let searchBtn = document.querySelector('#searchBtn');
+    searchBtn.addEventListener('click', (e) => {
+      searchBtnClick(results);
+    });
+
     renderResults(results);
   });
+
   const renderResults = (results) => {
     if (!results.length) {
       return searchWrapper.classList.remove('show');
@@ -149,11 +162,12 @@ const loadMain = () => {
       resultsWrapper.innerHTML = '';
       resultsWrapper.innerHTML = '';
     });
-    $('#searchBtn').click(function (e) {
-      console.log(content[0]);
-    });
   };
 };
+
+////
+//load events
+////
 
 $('#currencies').click(function (e) {
   loadMain();
@@ -165,8 +179,6 @@ $('#about').click(function (e) {
   $('.realtime-container').html('');
   $('.about-container').html('hi');
 });
-
-/////////////////////////////////////////////
 
 $('#realtime').click(function (e) {
   $('.card-container').html('');

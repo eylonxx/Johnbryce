@@ -38,7 +38,7 @@
   outline: none;
 }
 
-.serachButton {
+.searchButton {
   position: absolute;
   border: none;
   background: none;
@@ -50,11 +50,11 @@
   width: 50px;
 }
 
-.serachButton:focus {
+.searchButton:focus {
   outline: none;
 }
 
-.serachButton i {
+.searchButton i {
   width: 100%;
   color: #6d7b98;
   line-height: 50px;
