@@ -10,7 +10,9 @@ const createSearchbox = () => {
 </div>`);
 };
 
-$('#currencies').click(function (e) {
+const loadMain = () => {
+  $('.realtime-container').html('');
+  $('.about-container').html('');
   const data = $.ajax({
     url: 'https://api.coingecko.com/api/v3/coins/',
     success: (response) => {
@@ -35,7 +37,7 @@ $('#currencies').click(function (e) {
       <div class="card card-cell">
         <div class="card-body">
           <div class="form-check form-switch switch-button position-absolute">
-            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+            <input class="form-check-input" id="rtcheck${i}" type="checkbox" id="flexSwitchCheckDefault">
             <label class="form-check-label" for="flexSwitchCheckDefault"></label>
           </div>
           <h5 id="${data[i].symbol}" class="card-title">${data[i].symbol.toUpperCase()}</h5>
@@ -63,6 +65,7 @@ $('#currencies').click(function (e) {
       cardContainer.append(newDiv);
       searchableContent.push(data[i].symbol);
     }
+
     addCollapseEventListener();
   };
 
@@ -138,10 +141,24 @@ $('#currencies').click(function (e) {
     searchWrapper.classList.add('show');
     resultsWrapper.innerHTML = `<ul>${content}</ul>`;
   };
+};
+
+$('#currencies').click(function (e) {
+  loadMain();
 });
 
 $('#about').click(function (e) {
   $('.card-container').html('');
   $('.searchBoxContainer').html('');
+  $('.realtime-container').html('');
   $('.about-container').html('hi');
+});
+
+/////////////////////////////////////////////
+
+$('#realtime').click(function (e) {
+  $('.card-container').html('');
+  $('.searchBoxContainer').html('');
+  $('.about-container').html('');
+  $('.realtime-container').html('gr');
 });
