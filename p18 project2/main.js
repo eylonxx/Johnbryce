@@ -1,10 +1,24 @@
-$(function () {
+const createSearchbox = () => {
+  $('.navbar-collapse').append(`          
+  <div class="searchBoxContainer ms-auto">
+  <div class="searchBoxWrapper">
+    <input class="searchBox" type="text">
+    <button class="serachButton">search</button>
+    <div class="results">
+    </div>
+  </div>
+</div>`);
+};
+
+$('#currencies').click(function (e) {
   const data = $.ajax({
     url: 'https://api.coingecko.com/api/v3/coins/',
     success: (response) => {
       storeData(response);
     },
   });
+
+  createSearchbox();
 
   const searchableContent = [];
   const searchInput = document.querySelector('.searchBox');
@@ -124,4 +138,10 @@ $(function () {
     searchWrapper.classList.add('show');
     resultsWrapper.innerHTML = `<ul>${content}</ul>`;
   };
+});
+
+$('#about').click(function (e) {
+  $('.card-container').html('');
+  $('.searchBoxContainer').html('');
+  $('.about-container').html('hi');
 });
