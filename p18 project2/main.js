@@ -1,18 +1,21 @@
 const createSearchbox = () => {
-  $('.navbar-collapse').append(`          
+  if (!document.querySelector('.searchBoxContainer')) {
+    $('.navbar-collapse').append(`          
   <div class="searchBoxContainer ms-auto">
   <div class="searchBoxWrapper">
     <input class="searchBox" type="text">
-    <button class="serachButton">search</button>
+    <button id="searchBtn" class="serachButton">Search</button>
     <div class="results">
     </div>
   </div>
 </div>`);
+  }
 };
 
 const loadMain = () => {
   $('.realtime-container').html('');
   $('.about-container').html('');
+  createSearchbox();
   const data = $.ajax({
     url: 'https://api.coingecko.com/api/v3/coins/',
     success: (response) => {
@@ -22,18 +25,13 @@ const loadMain = () => {
 
   createSearchbox();
 
-  const searchableContent = [];
-  const searchInput = document.querySelector('.searchBox');
-  const searchWrapper = document.querySelector('.searchBoxWrapper');
-  const resultsWrapper = document.querySelector('.results');
-
   const storeData = (rawData) => {
     const data = rawData;
-
-    const cardContainer = document.querySelector('.card-container');
-    for (let i = 0; i < data.length; i++) {
-      let newDiv = document.createElement('div');
-      newDiv.innerHTML = `
+    if (!document.querySelector('#btc')) {
+      const cardContainer = document.querySelector('.card-container');
+      for (let i = 0; i < data.length; i++) {
+        let newDiv = document.createElement('div');
+        newDiv.innerHTML = `
       <div class="card card-cell">
         <div class="card-body">
           <div class="form-check form-switch switch-button position-absolute">
@@ -62,8 +60,9 @@ const loadMain = () => {
         </div>
       </div>
 `;
-      cardContainer.append(newDiv);
-      searchableContent.push(data[i].symbol);
+        cardContainer.append(newDiv);
+        searchableContent.push(data[i].symbol);
+      }
     }
 
     addCollapseEventListener();
@@ -82,7 +81,7 @@ const loadMain = () => {
      <p>${data.ils}₪</p>`;
     };
 
-    const checkTwoMins = (date) => Math.floor(Math.abs(new Date() - date) / 1000 / 60) > 2;
+    const checkTwoMins = (date) => Math.floor(Math.abs(new Date() - date) / 1000 / 60) >= 2;
 
     const storeMoreInfoData = (rawData, id) => {
       localStorage.setItem(
@@ -117,6 +116,11 @@ const loadMain = () => {
     });
   };
 
+  const searchableContent = [];
+  const searchInput = document.querySelector('.searchBox');
+  const searchWrapper = document.querySelector('.searchBoxWrapper');
+  const resultsWrapper = document.querySelector('.results');
+
   searchInput.addEventListener('keyup', () => {
     let results = '';
     let input = searchInput.value;
@@ -134,12 +138,20 @@ const loadMain = () => {
 
     let content = results
       .map((item) => {
-        return `<li><a href="#${item}">${item}</a></li>`;
+        return `<li><a class="results-reset" href="#${item}">${item}</a></li>`;
       })
       .join('');
 
     searchWrapper.classList.add('show');
     resultsWrapper.innerHTML = `<ul>${content}</ul>`;
+    $('.results-reset').click(function (e) {
+      searchInput.value = '';
+      resultsWrapper.innerHTML = '';
+      resultsWrapper.innerHTML = '';
+    });
+    $('#searchBtn').click(function (e) {
+      console.log(content[0]);
+    });
   };
 };
 
@@ -149,7 +161,7 @@ $('#currencies').click(function (e) {
 
 $('#about').click(function (e) {
   $('.card-container').html('');
-  $('.searchBoxContainer').html('');
+  $('.searchBoxContainer').remove();
   $('.realtime-container').html('');
   $('.about-container').html('hi');
 });
@@ -158,7 +170,7 @@ $('#about').click(function (e) {
 
 $('#realtime').click(function (e) {
   $('.card-container').html('');
-  $('.searchBoxContainer').html('');
+  $('.searchBoxContainer').remove();
   $('.about-container').html('');
   $('.realtime-container').html('gr');
 });
