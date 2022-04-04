@@ -1,4 +1,5 @@
 const createSearchbox = () => {
+  //check if a searchbox exists already
   if (!document.querySelector('.searchBoxContainer')) {
     $('.navbar-collapse').append(`          
   <div class="searchBoxContainer ms-auto">
@@ -26,6 +27,7 @@ const loadMain = () => {
 
   const storeData = (rawData) => {
     const data = rawData;
+    //checks if there any coins already
     if (!document.querySelector('#btc')) {
       const cardContainer = document.querySelector('.card-container');
       for (let i = 0; i < data.length; i++) {
@@ -81,9 +83,11 @@ const loadMain = () => {
      <p>${data.ils}₪</p>`;
     };
 
+    //check if two minutes passed
     const checkTwoMins = (date) => Math.floor(Math.abs(new Date() - date) / 1000 / 60) >= 2;
 
     const storeMoreInfoData = (rawData, id) => {
+      //store to local storage
       localStorage.setItem(
         id,
         JSON.stringify({
@@ -131,7 +135,7 @@ const loadMain = () => {
       });
     }
 
-    //on searchbutton click go to first result
+    //on searchbutton click to go to the first result
     const searchBtnClick = (results) => {
       document.querySelector(`#${results[0]}`).scrollIntoView();
     };
