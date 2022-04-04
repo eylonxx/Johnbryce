@@ -138,6 +138,9 @@ const loadMain = () => {
     //on searchbutton click to go to the first result
     const searchBtnClick = (results) => {
       document.querySelector(`#${results[0]}`).scrollIntoView();
+      searchInput.value = '';
+      resultsWrapper.innerHTML = '';
+      resultsWrapper.innerHTML = '';
     };
 
     let searchBtn = document.querySelector('#searchBtn');
