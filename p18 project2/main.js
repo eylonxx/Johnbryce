@@ -135,7 +135,7 @@ const loadMain = () => {
       });
     }
 
-    //on searchbutton click to go to the first result
+    //on searchbutton click go to the first result
     const searchBtnClick = (results) => {
       document.querySelector(`#${results[0]}`).scrollIntoView();
       searchInput.value = '';
@@ -184,12 +184,12 @@ $('#about').click(function (e) {
   $('.card-container').html('');
   $('.searchBoxContainer').remove();
   $('.realtime-container').html('');
-  $('.about-container').html('hi');
+  $('.about-container').html('hi'); //content goes here
 });
 
 $('#realtime').click(function (e) {
   $('.card-container').html('');
   $('.searchBoxContainer').remove();
   $('.about-container').html('');
-  $('.realtime-container').html('gr');
+  $('.realtime-container').html('gr'); //content goes here
 });

@@ -1,3 +1,6 @@
+html {
+  width: 100vw;
+}
 .switch-button {
   left: 80%;
   font-size: 1.25rem;
