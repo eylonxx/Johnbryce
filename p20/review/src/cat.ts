@@ -15,7 +15,7 @@ class Cat {
     this._age = age;
     this.color = color;
     this.chipCode = Math.floor(Math.random() * 1000000);
-    this._price = price;
+    this.price = price;
     console.log('One cat object has been created.');
   }
   public get age(): number {
