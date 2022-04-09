@@ -92,5 +92,5 @@ class Arnav extends ShutzMember {
   }
 }
 
-const dor = new Arnav('dor', 22, new Date(1998, 1, 1));
+const dror = new Arnav('dor', 22, new Date(1998, 1, 1));
 console.log(dor.toString());
