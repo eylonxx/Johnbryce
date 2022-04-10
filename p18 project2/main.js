@@ -1,5 +1,6 @@
 const createSearchbox = () => {
   //check if a searchbox exists already
+  //use jquery
   if (!document.querySelector('.searchBoxContainer')) {
     $('.navbar-collapse').append(`          
   <div class="searchBoxContainer ms-auto">
@@ -28,9 +29,11 @@ const loadMain = () => {
   const storeData = (rawData) => {
     const data = rawData;
     //checks if there any coins already
+    //use jquery
     if (!document.querySelector('#btc')) {
       const cardContainer = document.querySelector('.card-container');
       for (let i = 0; i < data.length; i++) {
+        //use jquery
         let newDiv = document.createElement('div');
         newDiv.innerHTML = `
       <div class="card card-cell">
@@ -71,11 +74,13 @@ const loadMain = () => {
 
   //moreinfo
   const addCollapseEventListener = () => {
+    //use jquery
     const moreInfoBtn = document.querySelectorAll('.moreInfoBtn');
     const collapseInfo = document.querySelectorAll('.collapseInfo');
     const moreInfoCard = document.querySelectorAll('.moreInfoCard');
 
     const displayCardInfo = (card, data) => {
+      //use jquery
       card.innerHTML = `
     <img class="coin-image" src="${data.image}">
      <p>${data.usd}$</p>
@@ -121,12 +126,14 @@ const loadMain = () => {
   };
 
   //searchbox
+  //use jquery
   const searchableContent = [];
   const searchInput = document.querySelector('.searchBox');
   const searchWrapper = document.querySelector('.searchBoxWrapper');
   const resultsWrapper = document.querySelector('.results');
 
   searchInput.addEventListener('keyup', () => {
+    //use jquery
     let results = '';
     let input = searchInput.value;
     if (input.length) {
@@ -137,13 +144,15 @@ const loadMain = () => {
 
     //on searchbutton click go to the first result
     const searchBtnClick = (results) => {
+      //use jquery
       document.querySelector(`#${results[0]}`).scrollIntoView();
       searchInput.value = '';
       resultsWrapper.innerHTML = '';
       resultsWrapper.innerHTML = '';
     };
-
+    //use jquery
     let searchBtn = document.querySelector('#searchBtn');
+    //use jquery
     searchBtn.addEventListener('click', (e) => {
       searchBtnClick(results);
     });
@@ -161,8 +170,9 @@ const loadMain = () => {
         return `<li><a class="results-reset" href="#${item}">${item}</a></li>`;
       })
       .join('');
-
+    //use jquery
     searchWrapper.classList.add('show');
+    //use jquery
     resultsWrapper.innerHTML = `<ul>${content}</ul>`;
     $('.results-reset').click(function (e) {
       searchInput.value = '';
