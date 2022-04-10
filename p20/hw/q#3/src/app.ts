@@ -34,6 +34,7 @@ let arr: Shape[] = [];
 const randInfo = (): number => {
   return Math.floor(Math.random() * 20);
 };
+
 for (let i = 0; i < 20; i++) {
   let rand = Math.floor(Math.random() * 3 + 1);
   let chosenShape: Shape;
