@@ -3,7 +3,7 @@ import CircularShape from './CircularShape';
 
 class Circle extends Shape implements CircularShape {
   public radius: number;
-  constructor(color, radius) {
+  constructor(color: string, radius: number) {
     super(color);
     this.radius = radius;
   }
