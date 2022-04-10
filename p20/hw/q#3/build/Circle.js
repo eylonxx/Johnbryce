@@ -19,23 +19,26 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var Shape_1 = __importDefault(require("./Shape"));
-var Square = /** @class */ (function (_super) {
-    __extends(Square, _super);
-    function Square(color, side) {
+var Circle = /** @class */ (function (_super) {
+    __extends(Circle, _super);
+    function Circle(color, radius) {
         var _this = _super.call(this, color) || this;
-        _this.side = side;
+        _this.radius = radius;
         return _this;
     }
-    Square.prototype.getArea = function (side) {
-        return side * side;
+    Circle.prototype.getArea = function (radius) {
+        return Math.PI * radius * radius;
     };
-    Square.prototype.getPerimeter = function (side) {
-        return side * 4;
+    Circle.prototype.getPerimeter = function (radius) {
+        return 2 * Math.PI * radius;
     };
-    Square.prototype.display = function () {
-        console.log(this.color, this.side);
-        console.log(this.getPerimeter(this.side), this.getArea(this.side));
+    Circle.prototype.display = function () {
+        console.log(this.color, this.radius);
+        console.log(this.getArea(this.radius), this.getPerimeter(this.radius), this.getDiameter(this.radius));
     };
-    return Square;
+    Circle.prototype.getDiameter = function (radius) {
+        return radius * 2;
+    };
+    return Circle;
 }(Shape_1.default));
-exports.default = Square;
+exports.default = Circle;

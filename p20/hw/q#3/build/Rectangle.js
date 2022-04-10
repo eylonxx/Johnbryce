@@ -19,23 +19,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var Shape_1 = __importDefault(require("./Shape"));
-var Square = /** @class */ (function (_super) {
-    __extends(Square, _super);
-    function Square(color, side) {
+var Rectangle = /** @class */ (function (_super) {
+    __extends(Rectangle, _super);
+    function Rectangle(color, height, width) {
         var _this = _super.call(this, color) || this;
-        _this.side = side;
+        _this.height = height;
+        _this.width = width;
         return _this;
     }
-    Square.prototype.getArea = function (side) {
-        return side * side;
+    Rectangle.prototype.getArea = function (height, width) {
+        return height * width;
     };
-    Square.prototype.getPerimeter = function (side) {
-        return side * 4;
+    Rectangle.prototype.getPerimeter = function (height, width) {
+        return height * 2 + width * 2;
     };
-    Square.prototype.display = function () {
-        console.log(this.color, this.side);
-        console.log(this.getPerimeter(this.side), this.getArea(this.side));
+    Rectangle.prototype.display = function () {
+        console.log(this.color, this.height, this.width);
+        console.log(this.getArea(this.height, this.width), this.getPerimeter(this.height, this.width));
     };
-    return Square;
+    return Rectangle;
 }(Shape_1.default));
-exports.default = Square;
+exports.default = Rectangle;
