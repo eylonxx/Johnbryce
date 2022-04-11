@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var Square_1 = __importDefault(require("./Square"));
 var Rectangle_1 = __importDefault(require("./Rectangle"));
 var Circle_1 = __importDefault(require("./Circle"));
+var Shape_1 = __importDefault(require("./Shape"));
 var ribua = new Square_1.default('black', 5);
 // ribua.display();
 var malben = new Rectangle_1.default('green', 5, 10);
@@ -45,3 +46,4 @@ for (var i = 0; i < 20; i++) {
     arr.push(chosenShape);
 }
 arr.forEach(function (shape) { return shape.display(); });
+console.log(Shape_1.default.count);

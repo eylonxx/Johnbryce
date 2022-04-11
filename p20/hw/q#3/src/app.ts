@@ -45,3 +45,4 @@ for (let i = 0; i < 20; i++) {
 }
 
 arr.forEach((shape) => shape.display());
+console.log(Shape.count);
