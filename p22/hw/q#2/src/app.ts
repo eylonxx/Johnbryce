@@ -24,6 +24,9 @@ const quickSort = (array: number[]): number[] => {
   }
 };
 
+let res = quickSort([5, 9, 7, 0, 4]);
+console.log(res);
+
 // [5, 9, 7, 0, 4]
 
 //pivot = 4
