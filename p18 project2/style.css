@@ -32,7 +32,6 @@ html {
   border: none;
   height: 40px;
   border-radius: 5px;
-  padding: 0px 40px 0px 10px;
   font-size: 18px;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
 }
@@ -45,23 +44,15 @@ html {
   position: absolute;
   border: none;
   background: none;
-  top: 0;
+  top: -5px;
   right: 0;
   height: 50px;
-  line-height: 50px;
   padding: 0;
   width: 50px;
 }
 
 .searchButton:focus {
   outline: none;
-}
-
-.searchButton i {
-  width: 100%;
-  color: #6d7b98;
-  line-height: 50px;
-  font-size: 22px;
 }
 
 .results {

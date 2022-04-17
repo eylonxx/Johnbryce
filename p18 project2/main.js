@@ -32,8 +32,6 @@ const loadMain = () => {
     //use jquery
     if (!document.querySelector('#btc')) {
       for (let i = 0; i < data.length; i++) {
-        //use jquery
-
         $('.card-container').append(`<div id=card${i}></div>`);
         $(`#card${i}`).html(`
         <div class="card card-cell">
@@ -64,8 +62,6 @@ const loadMain = () => {
           </div>
         </div>
   `);
-        // cardContainer.append(newDiv); old nonjq
-        // $('.card-container').append(newDiv);
         searchableContent.push(data[i].symbol);
       }
     }
@@ -75,7 +71,6 @@ const loadMain = () => {
 
   //moreinfo
   const addCollapseEventListener = () => {
-    //use jquery
     const moreInfoBtn = $('.moreInfoBtn');
     const collapseInfo = document.querySelectorAll('.collapseInfo');
     //must use vanilla js queryselector since i have to use for each to iterate over the info
@@ -128,16 +123,11 @@ const loadMain = () => {
   };
 
   //searchbox
-  //use jquery
   const searchableContent = [];
-  const searchInput = document.querySelector('.searchBox');
-  const searchWrapper = document.querySelector('.searchBoxWrapper');
-  const resultsWrapper = document.querySelector('.results');
 
-  searchInput.addEventListener('keyup', () => {
-    //use jquery
+  $('.searchBox').keyup(function (e) {
     let results = '';
-    let input = searchInput.value;
+    let input = $('.searchBox').val();
     if (input.length) {
       results = searchableContent.filter((item) => {
         return item.toLowerCase().includes(input.toLowerCase());
@@ -146,16 +136,11 @@ const loadMain = () => {
 
     //on searchbutton click go to the first result
     const searchBtnClick = (results) => {
-      //use jquery
       document.querySelector(`#${results[0]}`).scrollIntoView();
-      searchInput.value = '';
-      resultsWrapper.innerHTML = '';
-      resultsWrapper.innerHTML = '';
+      $('.searchBox').val('');
+      $('.results').html('');
     };
-    //use jquery
-    let searchBtn = document.querySelector('#searchBtn');
-    //use jquery
-    searchBtn.addEventListener('click', (e) => {
+    $('#searchBtn').click(function (e) {
       searchBtnClick(results);
     });
 
@@ -164,8 +149,7 @@ const loadMain = () => {
 
   const renderResults = (results) => {
     if (!results.length) {
-      //use jquery
-      return searchWrapper.classList.remove('show');
+      return $('.searchBoxWrapper').removeClass('show');
     }
 
     let content = results
@@ -173,14 +157,11 @@ const loadMain = () => {
         return `<li><a class="results-reset" href="#${item}">${item}</a></li>`;
       })
       .join('');
-    //use jquery
-    searchWrapper.classList.add('show');
-    //use jquery
-    resultsWrapper.innerHTML = `<ul>${content}</ul>`;
+    $('.searchBoxWrapper').addClass('show');
+    $('.results').html(`<ul>${content}</ul>`);
     $('.results-reset').click(function (e) {
-      searchInput.value = '';
-      resultsWrapper.innerHTML = '';
-      resultsWrapper.innerHTML = '';
+      $('.searchBox').val('');
+      $('.results').html('');
     });
   };
 };
