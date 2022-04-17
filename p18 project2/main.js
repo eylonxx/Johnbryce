@@ -76,18 +76,18 @@ const loadMain = () => {
   //moreinfo
   const addCollapseEventListener = () => {
     //use jquery
-    const moreInfoBtn = document.querySelectorAll('.moreInfoBtn');
+    const moreInfoBtn = $('.moreInfoBtn');
     const collapseInfo = document.querySelectorAll('.collapseInfo');
-    const moreInfoCard = document.querySelectorAll('.moreInfoCard');
+    //must use vanilla js queryselector since i have to use for each to iterate over the info
+    //because im using the Bootstrap show event for the collapse
+    const moreInfoCard = $('.moreInfoCard');
 
     const displayCardInfo = (card, data) => {
-      //use jquery
       $(card).html(`
       <img class="coin-image" src="${data.image}">
        <p>${data.usd}$</p>
         <p>${data.eur}€</p>
        <p>${data.ils}₪</p>`);
-      // card.innerHTML = ;
     };
 
     //check if two minutes passed
@@ -164,6 +164,7 @@ const loadMain = () => {
 
   const renderResults = (results) => {
     if (!results.length) {
+      //use jquery
       return searchWrapper.classList.remove('show');
     }
 
