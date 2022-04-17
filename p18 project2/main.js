@@ -31,40 +31,41 @@ const loadMain = () => {
     //checks if there any coins already
     //use jquery
     if (!document.querySelector('#btc')) {
-      const cardContainer = document.querySelector('.card-container');
       for (let i = 0; i < data.length; i++) {
         //use jquery
-        let newDiv = document.createElement('div');
-        newDiv.innerHTML = `
-      <div class="card card-cell">
-        <div class="card-body">
-          <div class="form-check form-switch switch-button position-absolute">
-            <input class="form-check-input" id="rtcheck${i}" type="checkbox" id="flexSwitchCheckDefault">
-            <label class="form-check-label" for="flexSwitchCheckDefault"></label>
-          </div>
-          <h5 id="${data[i].symbol}" class="card-title">${data[i].symbol.toUpperCase()}</h5>
-          <p class="card-text">${data[i].id}</p>
-          <p class="">
 
-          <button class="btn btn-primary moreInfoBtn" id="${
-            data[i].id
-          }" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample${i}" aria-expanded="false" aria-controls="collapseExample">
-          More Info
-          </button>
-          <div class="collapse collapseInfo" id="collapseExample${i}">
-               <div class="card card-body moreInfoCard">
-               <div class="spinner-border" role="status">
-                   <span class="visually-hidden">Loading...</span>
-                </div>
-               </div>
+        $('.card-container').append(`<div id=card${i}></div>`);
+        $(`#card${i}`).html(`
+        <div class="card card-cell">
+          <div class="card-body">
+            <div class="form-check form-switch switch-button position-absolute">
+              <input class="form-check-input" id="rtcheck${i}" type="checkbox" id="flexSwitchCheckDefault">
+              <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+            </div>
+            <h5 id="${data[i].symbol}" class="card-title">${data[i].symbol.toUpperCase()}</h5>
+            <p class="card-text">${data[i].id}</p>
+            <p class="">
+  
+            <button class="btn btn-primary moreInfoBtn" id="${
+              data[i].id
+            }" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample${i}" aria-expanded="false" aria-controls="collapseExample">
+            More Info
+            </button>
+            <div class="collapse collapseInfo" id="collapseExample${i}">
+                 <div class="card card-body moreInfoCard">
+                 <div class="spinner-border" role="status">
+                     <span class="visually-hidden">Loading...</span>
+                  </div>
+                 </div>
+            </div>
+  
+            </p>
+            
           </div>
-
-          </p>
-          
         </div>
-      </div>
-`;
-        cardContainer.append(newDiv);
+  `);
+        // cardContainer.append(newDiv); old nonjq
+        // $('.card-container').append(newDiv);
         searchableContent.push(data[i].symbol);
       }
     }
@@ -81,11 +82,12 @@ const loadMain = () => {
 
     const displayCardInfo = (card, data) => {
       //use jquery
-      card.innerHTML = `
-    <img class="coin-image" src="${data.image}">
-     <p>${data.usd}$</p>
-      <p>${data.eur}€</p>
-     <p>${data.ils}₪</p>`;
+      $(card).html(`
+      <img class="coin-image" src="${data.image}">
+       <p>${data.usd}$</p>
+        <p>${data.eur}€</p>
+       <p>${data.ils}₪</p>`);
+      // card.innerHTML = ;
     };
 
     //check if two minutes passed
