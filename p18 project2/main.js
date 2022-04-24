@@ -17,6 +17,7 @@ const createSearchbox = () => {
 const loadMain = () => {
   $('.realtime-container').html('');
   $('.about-container').html('');
+  $('#parallax').addClass('parallax');
   const data = $.ajax({
     url: 'https://api.coingecko.com/api/v3/coins/',
     success: (response) => {
@@ -178,6 +179,7 @@ $('#about').click(function (e) {
   $('.card-container').html('');
   $('.searchBoxContainer').remove();
   $('.realtime-container').html('');
+  $('#parallax').removeClass('parallax');
   $('.about-container').html('hi'); //content goes here
 });
 
