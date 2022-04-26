@@ -26,6 +26,7 @@ const generateTemplate = (data) => {
   resultsCountry.innerHTML = `
 <h2>Total Population: ${total}</h2>
 <h2>Average Population: ${average}</h2>
+<h2>Total Countries: ${data.length}</h2>
 <table class="table table-light">
 <thead>
     <tr>
