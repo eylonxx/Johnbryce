@@ -137,9 +137,14 @@ allButton.addEventListener('click', async () => {
   resultsCountry.innerHTML = '';
   resultsRegion.innerHTML = '';
   //
-  const data = await getData('all');
-  console.log(data);
-  generateTemplate(data);
+  try {
+    const data = await getData('all');
+    console.log(data);
+    generateTemplate(data);
+  } catch (e) {
+    resultsContainer.innerHTML = 'ERROR! THIS COUNTRY DOES NOT EXIST!';
+    console.log(e);
+  }
 });
 
 //get Specific country
@@ -148,6 +153,11 @@ searchButton.addEventListener('click', async () => {
   resultsCountry.innerHTML = '';
   resultsRegion.innerHTML = '';
   //
-  const data = await getData(`/name/${searchInput.value}`);
-  generateTemplate(data);
+  try {
+    const data = await getData(`/name/${searchInput.value}`);
+    generateTemplate(data);
+  } catch (e) {
+    resultsContainer.innerHTML = 'ERROR! THIS COUNTRY DOES NOT EXIST!';
+    console.log(e);
+  }
 });
