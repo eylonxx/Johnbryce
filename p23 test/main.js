@@ -40,7 +40,37 @@ const generateTemplate = (data) => {
 </table>`;
   //
 
-  //fill country info
+  //basic template region
+  resultsRegion.innerHTML = `
+    <table class="table table-light">
+    <thead>
+        <tr>
+            <th>Region</th>
+            <th>Number of Countries</th>
+        </tr>
+    </thead>
+    <tbody id="region-content">
+    
+    </tbody>
+    </table>`;
+  //
+
+  //basic currencies template
+  resultsCurrencies.innerHTML = `
+  <table class="table table-light">
+  <thead>
+      <tr>
+          <th>Currencies</th>
+          <th>Number of countries using currency</th>
+      </tr>
+  </thead>
+  <tbody id="currencies-content">
+  
+  </tbody>
+  </table>`;
+  //
+
+  //country logic
   const countryContent = document.querySelector('#country-content');
   for (let country of data) {
     countryContent.innerHTML += `
@@ -53,21 +83,7 @@ const generateTemplate = (data) => {
   }
   //
 
-  //basic template region
-  resultsRegion.innerHTML = `
-<table class="table table-light">
-<thead>
-    <tr>
-        <th>Region</th>
-        <th>Number of Countries</th>
-    </tr>
-</thead>
-<tbody id="region-content">
-
-</tbody>
-</table>`;
-  //
-
+  //region logic
   const regionContent = document.querySelector('#region-content');
   const regions = { Americas: 0, Africa: 0, Asia: 0, Oceania: 0, Antarctic: 0 };
 
@@ -86,33 +102,27 @@ const generateTemplate = (data) => {
         `;
     }
   });
+  //
 
-  resultsCurrencies.innerHTML = `
-  <table class="table table-light">
-  <thead>
-      <tr>
-          <th>Currencies</th>
-          <th>Number of countries using currency</th>
-      </tr>
-  </thead>
-  <tbody id="currencies-content">
-  
-  </tbody>
-  </table>`;
-
+  //currencies logic
   const currenciesContent = document.querySelector('#currencies-content');
   const currencies = {};
   for (let country of data) {
+    //check if currencies exist
     if (country.currencies) {
+      //iterate over keys of currencies
       Object.keys(country.currencies).forEach((key) => {
+        //increment key if exists
         if (key in currencies) {
           currencies[key]++;
         } else {
+          //create and initialize to 1 if doesnt exist
           currencies[key] = 1;
         }
       });
     }
   }
+
   Object.entries(currencies).forEach((entry) => {
     //entry[1] = number of countries
     //entry[0] = currency name
@@ -125,7 +135,7 @@ const generateTemplate = (data) => {
         `;
     }
   });
-  console.log(currencies);
+  //
 };
 
 const resetPage = () => {
@@ -134,7 +144,7 @@ const resetPage = () => {
   resultsCurrencies.innerHTML = '';
 };
 
-//get All counties
+//get All countries
 allButton.addEventListener('click', async () => {
   resetPage();
   try {
@@ -147,7 +157,8 @@ allButton.addEventListener('click', async () => {
     console.log(e);
   }
 });
-//form submit
+
+//form submit (button and enter)
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   resetPage();
