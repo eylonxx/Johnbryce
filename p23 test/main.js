@@ -3,6 +3,7 @@ const searchInput = document.querySelector('#searchInput');
 const resultsContainer = document.querySelector('#results');
 const resultsCountry = document.querySelector('#results-country');
 const resultsRegion = document.querySelector('#results-region');
+const resultsCurrencies = document.querySelector('#results-currencies');
 const form = document.querySelector('#form');
 
 // EYLON PERETS 318245453
@@ -30,6 +31,7 @@ const generateTemplate = (data) => {
     <tr>
         <th>Country Name</th>
         <th>Number of Citizens</th>
+        <th>Currencies</th>
     </tr>
 </thead>
 <tbody id="country-content">
@@ -45,6 +47,7 @@ const generateTemplate = (data) => {
   <tr>
   <td>${country.name.official}</td>
   <td>${country.population}</td>
+  <td>${country.currencies ? Object.keys(country.currencies) : 'none'}</td>
   </tr>
   `;
   }
@@ -52,7 +55,7 @@ const generateTemplate = (data) => {
 
   //basic template region
   resultsRegion.innerHTML = `
-<table>
+<table class="table table-light">
 <thead>
     <tr>
         <th>Region</th>
@@ -71,8 +74,9 @@ const generateTemplate = (data) => {
   for (let country of data) {
     regions[country.region]++;
   }
-
   Object.entries(regions).forEach((entry) => {
+    //entry[1] = number of countries
+    //entry[0] = country name
     if (entry[1]) {
       regionContent.innerHTML += `
         <tr>
@@ -82,11 +86,52 @@ const generateTemplate = (data) => {
         `;
     }
   });
+
+  resultsCurrencies.innerHTML = `
+  <table class="table table-light">
+  <thead>
+      <tr>
+          <th>Currencies</th>
+          <th>Number of countries using currency</th>
+      </tr>
+  </thead>
+  <tbody id="currencies-content">
+  
+  </tbody>
+  </table>`;
+
+  const currenciesContent = document.querySelector('#currencies-content');
+  const currencies = {};
+  for (let country of data) {
+    if (country.currencies) {
+      Object.keys(country.currencies).forEach((key) => {
+        if (key in currencies) {
+          currencies[key]++;
+        } else {
+          currencies[key] = 1;
+        }
+      });
+    }
+  }
+  Object.entries(currencies).forEach((entry) => {
+    //entry[1] = number of countries
+    //entry[0] = currency name
+    if (entry[1]) {
+      currenciesContent.innerHTML += `
+        <tr>
+        <td>${entry[0]}</td>
+        <td>${entry[1]}</td>
+        </tr>
+        `;
+    }
+  });
+  console.log(currencies);
 };
 
 const resetPage = () => {
   resultsCountry.innerHTML = '';
   resultsRegion.innerHTML = '';
+  resultsCurrencies.innerHTML = '';
 };
 
 //get All counties
@@ -94,6 +139,7 @@ allButton.addEventListener('click', async () => {
   resetPage();
   try {
     const data = await getData('all');
+    console.log(data);
     generateTemplate(data);
     searchInput.value = '';
   } catch (e) {
