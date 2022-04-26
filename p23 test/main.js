@@ -131,12 +131,14 @@ const generateTemplate = (data) => {
   }
 };
 
-//get All counties
-allButton.addEventListener('click', async () => {
-  //reset
+const resetPage = () => {
   resultsCountry.innerHTML = '';
   resultsRegion.innerHTML = '';
-  //
+};
+
+//get All counties
+allButton.addEventListener('click', async () => {
+  resetPage();
   try {
     const data = await getData('all');
     console.log(data);
@@ -149,10 +151,7 @@ allButton.addEventListener('click', async () => {
 
 //get Specific country
 searchButton.addEventListener('click', async () => {
-  //reset
-  resultsCountry.innerHTML = '';
-  resultsRegion.innerHTML = '';
-  //
+  resetPage();
   try {
     const data = await getData(`/name/${searchInput.value}`);
     generateTemplate(data);
