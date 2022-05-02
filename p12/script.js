@@ -19,6 +19,9 @@ const saveAndSubmitData = () => {
     };
     localStorage.setItem(`${task.taskId}`, JSON.stringify(task));
     createNewTask(task);
+    taskText.value = '';
+    taskDate.value = '';
+    taskTime.value = '';
   }
 };
 
