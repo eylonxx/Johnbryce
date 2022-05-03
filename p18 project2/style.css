@@ -1,5 +1,5 @@
 html {
-  width: 100vw;
+  box-sizing: border-box;
 }
 .switch-button {
   left: 80%;
@@ -99,3 +99,5 @@ html {
 .results ul li:hover {
   background: #ececec;
 }
+
+/* about */

@@ -14,6 +14,7 @@ const createSearchbox = () => {
 };
 
 const loadMain = () => {
+  //reset
   $('.realtime-container').html('');
   $('.about-container').html('');
   $('#parallax').addClass('parallax');
@@ -25,7 +26,6 @@ const loadMain = () => {
   });
 
   createSearchbox();
-  let searchboxFlag = true;
   const storeData = (rawData) => {
     const data = rawData;
     //checks if there any coins already
@@ -176,14 +176,23 @@ $('#currencies').click(function (e) {
 $('#about').click(function (e) {
   $('.card-container').html('');
   $('.searchBoxContainer').remove();
-  $('.realtime-container').html('');
+  $('.realtime-container').remove();
   $('#parallax').removeClass('parallax');
-  $('.about-container').html('hi'); //content goes here
+  //checks if theres an about container
+  if (!$('.about-container').length) {
+    $('.wrapper').append(`<div class='about-container'></div>`);
+  }
+  $('.about-container').html('hi my name is eylon'); //content goes here
 });
 
 $('#realtime').click(function (e) {
   $('.card-container').html('');
   $('.searchBoxContainer').remove();
-  $('.about-container').html('');
-  $('.realtime-container').html('gr'); //content goes here
+  $('.about-container').remove();
+  $('#parallax').removeClass('parallax');
+  // checks if theres a rt container
+  if (!$('.realtime-container').length) {
+    $('.wrapper').append(`<div class='realtime-container'></div>`);
+  }
+  $('.realtime-container').html('NOT IMPLEMENTED YET!!! COME BACK LATER!!!'); //content goes here
 });
