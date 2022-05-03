@@ -171,6 +171,8 @@ const loadMain = () => {
 
 $('#currencies').click(function (e) {
   loadMain();
+  $('.about-container').remove();
+  $('.realtime-container').remove();
 });
 
 $('#about').click(function (e) {

@@ -101,3 +101,9 @@ html {
 }
 
 /* about */
+.about-container {
+  height: 100vh;
+}
+.realtime-container {
+  height: 100vh;
+}
