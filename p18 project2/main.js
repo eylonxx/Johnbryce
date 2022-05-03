@@ -1,7 +1,6 @@
 const createSearchbox = () => {
   //check if a searchbox exists already
-  //use jquery
-  if (!document.querySelector('.searchBoxContainer')) {
+  if (!$('.searchBoxContainer').length) {
     $('.navbar-collapse').append(`          
   <div class="searchBoxContainer ms-auto">
   <div class="searchBoxWrapper">
@@ -26,12 +25,11 @@ const loadMain = () => {
   });
 
   createSearchbox();
-
+  let searchboxFlag = true;
   const storeData = (rawData) => {
     const data = rawData;
     //checks if there any coins already
-    //use jquery
-    if (!document.querySelector('#btc')) {
+    if (!$('#btc').length) {
       for (let i = 0; i < data.length; i++) {
         $('.card-container').append(`<div id=card${i}></div>`);
         $(`#card${i}`).html(`
