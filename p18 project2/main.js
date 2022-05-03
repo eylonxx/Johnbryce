@@ -50,11 +50,11 @@ const loadMain = () => {
             More Info
             </button>
             <div class="collapse collapseInfo" id="collapseExample${i}">
-                 <div class="card card-body moreInfoCard">
-                 <div class="spinner-border" role="status">
-                     <span class="visually-hidden">Loading...</span>
-                  </div>
-                 </div>
+              <div class="card card-body moreInfoCard">
+                <div class="spinner-border" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
             </div>
   
             </p>
@@ -102,9 +102,9 @@ const loadMain = () => {
       );
     };
 
-    collapseInfo.each((i) => {
+    $('.collapseInfo').each(function (i) {
       //call ajax everytime a show.bs.collapse event fires
-      $(this).on('show.bs.collapse', function () {
+      $(this).on('show.bs.collapse', () => {
         const id = moreInfoBtn[i]['id'];
         let data = JSON.parse(localStorage.getItem(id));
         //check if we have have it already or more than 2 mins passed
