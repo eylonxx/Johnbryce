@@ -1,0 +1,4 @@
+.Aside {
+  display: flex;
+  flex-direction: column;
+}
