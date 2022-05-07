@@ -1,0 +1,14 @@
+.Menu {
+	display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 20px;
+    font-size: large;
+}
+
+/* This is a special css class for the active menu: */
+.Menu > .active {
+    color: green;
+    font-weight: bold;
+    font-family: Arial;
+}

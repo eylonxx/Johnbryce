@@ -7,6 +7,7 @@ function Aside(): JSX.Element {
       <Link to="/">Home</Link>
       <Link to="/about">About</Link>
       <Link to="/products">Products</Link>
+      <Link to="/employees">Employees</Link>
     </div>
   );
 }
