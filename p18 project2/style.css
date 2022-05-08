@@ -6,7 +6,7 @@ html {
   font-size: 1.25rem;
 }
 .card-cell {
-  width: 328px;
+  width: 336px;
   height: 15rem;
   overflow-x: none;
   overflow-y: auto;
@@ -34,6 +34,7 @@ html {
   height: 50px;
 }
 
+/* search */
 .searchBoxWrapper {
   margin: 0 auto;
   position: relative;
@@ -100,47 +101,55 @@ html {
   background: #ececec;
 }
 
-/* about */
+/* about and realtime */
+
+.realtime-container,
 .about-container {
-  height: 100vh;
+  height: 91.5vh;
+  color: #ececec;
+  text-align: center;
+  font-size: 1.2rem;
+  text-shadow: 1px 1px 2px #404040;
 }
-.realtime-container {
-  height: 100vh;
+
+.about-container ul {
+  list-style: none;
+  font-size: 1.5rem;
 }
+
+/* responsiveness */
+
 @media (max-width: 1200px) {
   .parallax {
     height: 25vh;
   }
-  .card-cell {
-    width: 330px;
-  }
-  .card-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-  }
-}
-@media (max-width: 950px) {
   .card-cell {
     width: 420px;
   }
   .card-container {
     display: flex;
     justify-content: center;
-    width: 100%;
+  }
+}
+@media (max-width: 950px) {
+  .card-cell {
+    width: 350px;
+  }
+  .card-container {
+    display: flex;
+    justify-content: center;
   }
   .parallax {
     height: 0vh;
   }
 }
-
-.about-container {
-  color: #ececec;
-  text-align: center;
-  font-size: 1.2rem;
-  text-shadow: 1px 1px 2px #404040;
+@media (max-width: 725px) {
+  .card-cell {
+    width: 470px;
+  }
 }
-.about-container ul {
-  list-style: none;
-  font-size: 1.5rem;
+@media (max-width: 600px) {
+  .card-cell {
+    width: 400px;
+  }
 }
