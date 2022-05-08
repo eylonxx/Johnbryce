@@ -1,16 +1,26 @@
 import './Employees.css';
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import EmployeeModel from '../../Models/emoloyeeModel';
+import employeeService from '../../Services/EmployeeService';
 function Employees(): JSX.Element {
+  const [employees, setEmployees] = useState<EmployeeModel[]>([]);
   useEffect(() => {
-    const getData = async () => {
-      const data = await axios.get('http://localhost:3030/api/employees');
-      console.log(data);
-    };
-    getData();
+    employeeService
+      .getAllEmployees()
+      .then((employees) => setEmployees(employees))
+      .catch((e) => console.log(e));
   }, []);
 
-  return <div className="Employees"></div>;
+  return (
+    <div className="Employees">
+      {employees.map((employee) => (
+        <h4>
+          {employee.firstName} {employee.lastName}
+        </h4>
+      ))}
+    </div>
+  );
 }
 
 export default Employees;
