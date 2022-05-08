@@ -107,3 +107,29 @@ html {
 .realtime-container {
   height: 100vh;
 }
+@media (max-width: 1200px) {
+  .parallax {
+    height: 25vh;
+  }
+  .card-cell {
+    width: 330px;
+  }
+  .card-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+}
+@media (max-width: 950px) {
+  .card-cell {
+    width: 420px;
+  }
+  .card-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  .parallax {
+    height: 0vh;
+  }
+}
