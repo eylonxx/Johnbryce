@@ -203,7 +203,28 @@ $('#about').click(function (e) {
     $('.wrapper').append(`<div class='about-container'></div>`);
   }
   //add content
-  $('.about-container').html('hi my name is eylon'); //content goes here
+  $('.about-container').html(`<div class="">
+<h2>So what is Cryptocurrency?</h2>
+<p>Cryptocurrency is a digital payment system that doesn't rely on banks to verify transactions. It’s a peer-to-peer system that can enable anyone anywhere to send and receive payments. Instead of being physical money carried around and exchanged in the real world, cryptocurrency payments exist purely as digital entries to an online database describing specific transactions. When you transfer cryptocurrency funds, the transactions are recorded in a public ledger. Cryptocurrency is stored in digital wallets.</p>
+<p>Cryptocurrency received its name because it uses encryption to verify transactions. This means advanced coding is involved in storing and transmitting cryptocurrency data between wallets and to public ledgers. The aim of encryption is to provide security and safety.</p>
+<p>The first cryptocurrency was Bitcoin, which was founded in 2009 and remains the best known today. Much of the interest in cryptocurrencies is to trade for profit, with speculators at times driving prices skyward.</p>  </div>
+<div>
+<h2>About us</h2>
+<p>
+We specialize in tracking and keeping you up-to-date with the latest prices and trends in the Crypto world!
+<p>Eylon Perets, Executive CEO Eylon Perets is an expert in the field of cryptocurrency with years of experience in navigating the highly dynamic cryptocurrency market, specializing in monitoring and real-time trading.</p>
+</p>
+<h2>About the website</h2>
+<p>This website was created with you in mind and uses the latest technologies!</p>
+<ul>
+<li>HTML</li>
+<li>CSS</li>
+<li>JAVASCRIPT</li>
+<li>BOOTSTRAP</li>
+<li>JQUERY</li>
+</ul>
+</div>
+`); //content goes here</p>
 });
 
 $('#realtime').click(function (e) {
