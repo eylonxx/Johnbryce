@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import ProductModel from "../../../Models/ProductModel";
 import productsService from "../../../Services/ProductsService";
+import ProductCard from "../ProductCard/ProductCard";
 import "./ProductList.css";
 
 function ProductList(): JSX.Element {
@@ -18,13 +20,9 @@ function ProductList(): JSX.Element {
     return (
         <div className="ProductList">
 
-            {/* Display name + price in a border */}
-            {products.map(p =>
-                <div className="Box">
-                    <span>{p.name} (${p.price})</span>
-                </div>
-            )}
+            <NavLink to="/products/new"> ➕ </NavLink>
 
+            {products.map(p => <ProductCard key={p.id} product={p} />)}
         </div>
     );
 }

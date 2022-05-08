@@ -1,0 +1,7 @@
+.ProductDetails {
+	text-align: center;
+}
+
+.ProductDetails > img {
+    width: 200px;
+}

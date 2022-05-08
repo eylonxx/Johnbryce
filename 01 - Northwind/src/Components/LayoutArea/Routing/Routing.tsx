@@ -1,6 +1,8 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import About from "../../AboutArea/About/About";
 import Home from "../../HomeArea/Home/Home";
+import AddProduct from "../../ProductsArea/AddProduct/AddProduct";
+import ProductDetails from "../../ProductsArea/ProductDetails/ProductDetails";
 import ProductList from "../../ProductsArea/ProductList/ProductList";
 import PageNotFound from "../PageNotFound/PageNotFound";
 import "./Routing.css";
@@ -12,8 +14,19 @@ function Routing(): JSX.Element {
             {/* All Routes Collection: */}
             <Routes>
 
+                {/* Home: */}
                 <Route path="/home" element={<Home />} />
+
+                {/* Product list: */}
                 <Route path="/products" element={<ProductList />} />
+
+                {/* /:prodId is a route parameter */}
+                <Route path="/products/details/:prodId" element={<ProductDetails />} />
+
+                {/* Add new product: */}
+                <Route path="products/new" element={<AddProduct />} />
+
+                {/* About: */}
                 <Route path="/about" element={<About />} />
 
                 {/* Default Route - first way:  */}
