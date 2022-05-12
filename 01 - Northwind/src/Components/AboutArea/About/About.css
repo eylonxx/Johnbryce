@@ -1,3 +1,14 @@
 .About {
-	
+	width: 450px;
+    margin: 20px;
+    padding: 20px;
+}
+
+.About .TextBox {
+    width: 100%;
+    margin: 5px 0;
+}
+
+.About .Centered {
+    text-align: center;
 }

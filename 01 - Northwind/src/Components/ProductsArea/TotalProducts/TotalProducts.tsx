@@ -1,25 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import store from '../../../Redux/Store';
+import { useEffect, useState } from "react";
+import store from "../../../Redux/Store";
+import "./TotalProducts.css";
 
-export default function TotalProducts() {
-  const [count, setCount] = useState<number>();
+function TotalProducts(): JSX.Element {
 
-  useEffect(() => {
-    setCount(store.getState().productsState.products.length);
+    const [count, setCount] = useState<number>();
 
-    const unsubscribe = store.subscribe(() => {
-      //subscribe change to global state
-      setCount(store.getState().productsState.products.length);
-    });
+    useEffect(() => {
 
-    return () => {
-      unsubscribe();
-    };
-  }, []);
+        setCount(store.getState().productsState.products.length);
 
-  return (
-    <div className="TotalProducts">
-      <span>Total Products: {count}</span>
-    </div>
-  );
+        // Subscribe for changes:
+        const unsubscribe = store.subscribe(() => {
+            setCount(store.getState().productsState.products.length);
+        });
+
+        return () => {
+            // Unsubscribe:
+            unsubscribe();
+        };
+
+    }, []);
+
+    return (
+        <div className="TotalProducts">
+			<span>Total Products: {count}</span>
+        </div>
+    );
+
 }
+
+export default TotalProducts;
