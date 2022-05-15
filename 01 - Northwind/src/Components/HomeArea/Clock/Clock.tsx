@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import "./Clock.css";
+import React, { useEffect, useState } from 'react';
+import './Clock.css';
 
 // useEffect - run side-effects
 
@@ -11,37 +11,31 @@ import "./Clock.css";
 
 // 3. Invoke some function once when component is about to be destroyed:
 // useEffect(() => {
-    // ...
-    // return () => {}; // <-- this function will be invoked once when component is about to be destroyed
+// ...
+// return () => {}; // <-- this function will be invoked once when component is about to be destroyed
 // }, []);
 
-
 function Clock(): JSX.Element {
-    
-    // State for handling the time to display:
-    const [time, setTime] = useState<string>("");
+  // State for handling the time to display:
+  const [time, setTime] = useState<string>('');
 
-    useEffect(() => {
+  useEffect(() => {
+    // Side-Effect (cause it is window.setInterval):
+    const timerId = setInterval(() => {
+      const now = new Date();
+      const currentTime = now.toLocaleTimeString();
+      setTime(currentTime);
+    }, 1000);
 
-        // Side-Effect (cause it is window.setInterval):
-        const timerId = setInterval(() => {
-            const now = new Date();
-            const currentTime = now.toLocaleTimeString();
-            console.log(currentTime);
-            setTime(currentTime);
-        }, 1000);
+    // Kill timer when component is about to be destroyed:
+    return () => clearInterval(timerId);
+  }, []);
 
-        // Kill timer when component is about to be destroyed: 
-        return () => clearInterval(timerId);
-
-    }, []);
-
-    return (
-        <div className="Clock Box">
-            <p>{time}</p>
-        </div>
-    );
-
+  return (
+    <div className="Clock Box">
+      <p>{time}</p>
+    </div>
+  );
 }
 
 export default Clock;

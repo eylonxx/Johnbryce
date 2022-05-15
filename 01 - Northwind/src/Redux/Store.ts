@@ -1,11 +1,12 @@
-import { combineReducers, createStore } from "redux";
-import { productsReducer } from "./ProductsState";
+import { combineReducers, createStore } from 'redux';
+import { AuthReducer } from './AuthState';
+import { productsReducer } from './ProductsState';
 
 // Single object containing all reducers:
 const reducers = combineReducers({
-    productsState: productsReducer,
-    // employeesState: employeesReducer,
-    // suppliersState: suppliersReducer
+  productsState: productsReducer,
+  authState: AuthReducer,
+  // suppliersState: suppliersReducer
 });
 
 const store = createStore(reducers);
