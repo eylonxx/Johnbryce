@@ -1,10 +1,11 @@
 import { combineReducers, createStore } from 'redux';
+import { AuthReducer } from './AuthState';
 import { employeeReducer } from './EmployeeState';
 
 // Single object containing all reducers:
 const reducers = combineReducers({
   employeesState: employeeReducer,
-  // employeesState: employeesReducer,
+  authState: AuthReducer,
   // suppliersState: suppliersReducer
 });
 
