@@ -12,6 +12,7 @@ function encrypt(plainText) {
 }
 
 function decrypt(cypherText) {
+  let plainText = '';
   for (let i = 0; i < cypherText.length; i++) {
     let ascii = cypherText.charCodeAt(i);
     ascii -= key;

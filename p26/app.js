@@ -1,3 +1,6 @@
 const cypher = require('./cypher.js');
 
-cypher.encrypt('hi');
+module.exports = {
+  encrpyt: cypher.encrypt,
+  decrypt: cypher.decrypt,
+};
