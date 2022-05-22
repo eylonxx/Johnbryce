@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Chess",
+    "description": "Chess board game",
+    "minAge": 4,
+    "maxAge": 120
+  },
+  {
+    "id": 2,
+    "name": "A Cute Doll",
+    "description": "A very cute doll for toddlers",
+    "minAge": 1,
+    "maxAge": 8
+  },
+  {
+    "id": 3,
+    "name": "Lego",
+    "description": "A cool lego kit",
+    "minAge": 5,
+    "maxAge": 12
+  }
+]
