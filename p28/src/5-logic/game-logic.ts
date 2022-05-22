@@ -47,6 +47,13 @@ async function deleteGame(id: number): Promise<void> {
   await dal.saveGames(games);
 }
 
+async function findByMinAge(minAge: number): Promise<GameModel[]> {
+  const games = await dal.fetchGames();
+  const filteredGames = games.filter((g) => g.minAge <= minAge);
+  console.log(filteredGames);
+  return filteredGames;
+}
+
 export default {
   getAllGames,
   getOneGame,
@@ -54,4 +61,5 @@ export default {
   updateFullGame,
   updatePartialGame,
   deleteGame,
+  findByMinAge,
 };

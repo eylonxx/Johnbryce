@@ -39,6 +39,13 @@ router.patch('/api/games/:gameId', async (req: Request, res: Response) => {
 router.delete('/api/games/:gameId', async (req: Request, res: Response) => {
   const id = +req.params.gameId;
   await gameLogic.deleteGame(id);
+  res.sendStatus(204);
+});
+
+router.get('/api/games/search-by-min-age/:minAge', async (req: Request, res: Response) => {
+  const minAge = +req.params.minAge;
+  const games = await gameLogic.findByMinAge(minAge);
+  res.json(games);
 });
 
 export default router;
