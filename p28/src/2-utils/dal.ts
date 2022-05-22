@@ -1,7 +1,7 @@
 import fs from 'fs/promises';
 import GameModel from '../4-models/game-model';
 
-const jsonPath = './src/1-assets/db/game.json';
+const jsonPath = './src/1-assets/db/games.json';
 async function fetchGames(): Promise<GameModel[]> {
   const content: string = await fs.readFile(jsonPath, 'utf-8');
   const games: GameModel[] = JSON.parse(content);
