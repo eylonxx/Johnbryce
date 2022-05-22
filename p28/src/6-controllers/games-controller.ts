@@ -20,4 +20,25 @@ router.post('/api/games', async (req: Request, res: Response) => {
   res.status(201).json(addedGame);
 });
 
+router.put('/api/games/:gameId', async (req: Request, res: Response) => {
+  const id = +req.params.gameId;
+  req.body.id = id;
+  const game = req.body;
+  const updatedGame = await gameLogic.updateFullGame(game);
+  res.json(updatedGame);
+});
+
+router.patch('/api/games/:gameId', async (req: Request, res: Response) => {
+  const id = +req.params.gameId;
+  req.body.id = id;
+  const game = req.body;
+  const updatedGame = await gameLogic.updatePartialGame(game);
+  res.json(updatedGame);
+});
+
+router.delete('/api/games/:gameId', async (req: Request, res: Response) => {
+  const id = +req.params.gameId;
+  await gameLogic.deleteGame(id);
+});
+
 export default router;
