@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "firstName": "Bart",
+        "lastName": "Simpson",
+        "email": "bart@gmail.com",
+        "password": "1234",
+        "role": "User"
+    },
+    {
+        "id": 2,
+        "firstName": "Lisa",
+        "lastName": "Simpson",
+        "email": "lisa@gmail.com",
+        "password": "abcd",
+        "role": "Manager"
+    },
+    {
+        "id": 3,
+        "firstName": "Homer",
+        "lastName": "Simpson",
+        "email": "homer@gmail.com",
+        "password": "qwerty",
+        "role": "Admin"
+    },
+    {
+        "id": 4,
+        "firstName": "Marge",
+        "lastName": "Simpson",
+        "email": "marge@gmail.com",
+        "password": "ABCD",
+        "role": "User"
+    },
+    {
+        "id": 5,
+        "firstName": "Marge",
+        "lastName": "Simpson",
+        "email": "marge@gmail.com",
+        "password": "ABCD",
+        "role": "User"
+    }
+]

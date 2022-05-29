@@ -1,0 +1,152 @@
+Time: 22.5.2022, 15:24:05, Method: GET, Route: /api/games
+
+Time: 22.5.2022, 15:24:38, Method: GET, Route: /api/games/1
+
+Time: 22.5.2022, 15:27:29, Method: POST, Route: /api/games
+
+Time: 22.5.2022, 15:35:36, Method: GET, Route: /api/games
+
+Time: 22.5.2022, 15:35:44, Method: GET, Route: /api/games/1
+
+Time: 22.5.2022, 15:35:48, Method: POST, Route: /api/games
+
+Time: 22.5.2022, 15:48:20, Method: GET, Route: /api/games
+
+Time: 22.5.2022, 15:48:24, Method: GET, Route: /api/games/1
+
+Time: 22.5.2022, 15:48:42, Method: POST, Route: /api/games
+
+Time: 22.5.2022, 15:48:56, Method: POST, Route: /api/games
+
+Time: 22.5.2022, 15:49:04, Method: POST, Route: /api/games
+
+Time: 22.5.2022, 16:04:24, Method: GET, Route: /api/games
+
+Time: 22.5.2022, 16:05:02, Method: GET, Route: /api/games
+
+Time: 24.5.2022, 9:21:02, Method: GET, Route: /api/games
+
+Time: 24.5.2022, 9:21:06, Method: GET, Route: /api/games/1
+
+Time: 24.5.2022, 9:21:22, Method: POST, Route: /api/games
+
+Time: 24.5.2022, 9:23:01, Method: GET, Route: /api/games
+
+Time: 24.5.2022, 9:23:03, Method: GET, Route: /api/games/1
+
+Time: 24.5.2022, 9:23:05, Method: POST, Route: /api/games
+
+Time: 24.5.2022, 9:29:58, Method: GET, Route: /api/games
+
+Time: 24.5.2022, 9:29:59, Method: GET, Route: /api/games/1
+
+Time: 24.5.2022, 9:30:01, Method: POST, Route: /api/games
+
+Time: 24.5.2022, 9:33:14, Method: PUT, Route: /api/games/1
+
+Time: 24.5.2022, 9:33:30, Method: PATCH, Route: /api/games/1
+
+Time: 24.5.2022, 9:33:37, Method: DELETE, Route: /api/games/4
+
+Time: 24.5.2022, 9:33:46, Method: GET, Route: /api/games/search-by-min-age/4
+
+Time: 24.5.2022, 10:00:31, Method: GET, Route: /api/games/1
+
+Time: 24.5.2022, 10:00:37, Method: GET, Route: /api/games/10
+
+Time: 24.5.2022, 10:05:47, Method: GET, Route: /api/games/10
+
+Time: 24.5.2022, 10:19:44, Method: GET, Route: /api/kittens
+
+Time: 24.5.2022, 10:20:11, Method: GET, Route: /api/kittens
+
+Time: 24.5.2022, 10:20:28, Method: GET, Route: /api/sdfsddsfsdfsdfdsfdsf
+
+Time: 24.5.2022, 10:23:16, Method: GET, Route: /api/
+
+Time: 24.5.2022, 10:23:25, Method: GET, Route: /api/uyuyuyu
+
+Time: 24.5.2022, 10:23:31, Method: POST, Route: /api/uyuyuyu
+
+Time: 24.5.2022, 10:23:35, Method: DELETE, Route: /api/uyuyuyu
+
+Time: 24.5.2022, 10:42:51, Method: DELETE, Route: /api/kittens
+
+Time: 24.5.2022, 10:42:55, Method: GET, Route: /api/kittens
+
+Time: 24.5.2022, 10:43:02, Method: GET, Route: /api/games
+
+Time: 24.5.2022, 10:43:11, Method: GET, Route: /api/games/1
+
+Time: 24.5.2022, 10:43:20, Method: GET, Route: /api/games/2
+
+Time: 24.5.2022, 10:43:28, Method: GET, Route: /api/games/927
+
+Time: 24.5.2022, 10:44:21, Method: GET, Route: /api/games/children
+
+Time: 24.5.2022, 10:44:44, Method: GET, Route: /api/games/89
+
+Time: 24.5.2022, 10:44:52, Method: GET, Route: /api/games/children
+
+Time: 24.5.2022, 10:46:36, Method: GET, Route: /api/games/1
+
+Time: 24.5.2022, 10:46:42, Method: GET, Route: /api/games/78
+
+Time: 24.5.2022, 10:46:48, Method: GET, Route: /api/games/children
+
+Time: 24.5.2022, 10:47:13, Method: GET, Route: /api/games/children
+
+Time: 24.5.2022, 10:47:17, Method: GET, Route: /api/games/12
+
+Time: 24.5.2022, 10:47:20, Method: GET, Route: /api/games/1
+
+Time: 24.5.2022, 10:48:40, Method: GET, Route: /api/games/children
+
+Time: 24.5.2022, 11:26:27, Method: POST, Route: /api/games
+
+Time: 24.5.2022, 11:27:08, Method: POST, Route: /api/games
+
+Time: 24.5.2022, 11:27:22, Method: POST, Route: /api/games
+
+Time: 24.5.2022, 11:27:43, Method: POST, Route: /api/games
+
+Time: 24.5.2022, 11:28:19, Method: POST, Route: /api/games
+
+Time: 24.5.2022, 11:29:39, Method: POST, Route: /api/games
+
+Time: 24.5.2022, 12:20:37, Method: POST, Route: /api/auth/register
+
+Time: 24.5.2022, 13:49:25, Method: POST, Route: /api/auth/register
+
+Time: 24.5.2022, 13:50:01, Method: POST, Route: /api/auth/login
+
+Time: 24.5.2022, 13:50:17, Method: POST, Route: /api/auth/login
+
+Time: 24.5.2022, 14:18:14, Method: GET, Route: /api/games
+
+Time: 24.5.2022, 14:18:21, Method: GET, Route: /api/games/1
+
+Time: 24.5.2022, 14:18:34, Method: POST, Route: /api/games
+
+Time: 24.5.2022, 14:19:56, Method: POST, Route: /api/games
+
+Time: 24.5.2022, 14:21:06, Method: POST, Route: /api/games
+
+Time: 24.5.2022, 14:21:21, Method: POST, Route: /api/auth/login
+
+Time: 24.5.2022, 14:22:51, Method: POST, Route: /api/games
+
+Time: 24.5.2022, 14:23:39, Method: POST, Route: /api/games
+
+Time: 24.5.2022, 14:25:18, Method: POST, Route: /api/games
+
+Time: 24.5.2022, 14:34:02, Method: PUT, Route: /api/games/4
+
+Time: 24.5.2022, 14:34:17, Method: DELETE, Route: /api/games/4
+
+Time: 24.5.2022, 14:35:00, Method: POST, Route: /api/auth/login
+
+Time: 24.5.2022, 14:35:43, Method: DELETE, Route: /api/games/4
+
+Time: 24.5.2022, 14:35:52, Method: DELETE, Route: /api/games/4
+

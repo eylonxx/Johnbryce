@@ -1,23 +1,37 @@
 [
-  {
-    "id": 1,
-    "name": "Chess",
-    "description": "Chess board game",
-    "minAge": 4,
-    "maxAge": 120
-  },
-  {
-    "id": 2,
-    "name": "A Cute Doll",
-    "description": "A very cute doll for toddlers",
-    "minAge": 1,
-    "maxAge": 8
-  },
-  {
-    "id": 3,
-    "name": "Lego",
-    "description": "A cool lego kit",
-    "minAge": 5,
-    "maxAge": 12
-  }
+    {
+        "id": 1,
+        "name": "Cool Chess",
+        "description": "Cool chess for the entire family",
+        "minAge": 4,
+        "maxAge": 120
+    },
+    {
+        "id": 2,
+        "name": "Cute Doll",
+        "description": "Very cute doll for toddlers",
+        "minAge": 1,
+        "maxAge": 8
+    },
+    {
+        "id": 3,
+        "name": "Lego",
+        "description": "Lego for entire family",
+        "minAge": 5,
+        "maxAge": 12
+    },
+    {
+        "id": 5,
+        "name": "Puzzle",
+        "description": "Cool Puzzle",
+        "minAge": 6,
+        "maxAge": 70
+    },
+    {
+        "id": 6,
+        "name": "Puzzle",
+        "description": "Cool Puzzle",
+        "minAge": 6,
+        "maxAge": 70
+    }
 ]
