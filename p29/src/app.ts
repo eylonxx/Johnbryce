@@ -8,4 +8,4 @@ server.use(express.json());
 server.use('/api', controller);
 server.use(catchAll);
 
-server.listen(3001, () => console.log('serving on port 3001!'));
+server.listen(3006, () => console.log('serving on port 3006!'));
