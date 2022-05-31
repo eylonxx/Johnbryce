@@ -3,6 +3,16 @@ import dal from '../2-utils/dal';
 import { ResourceNotFoundError, ValidationError } from '../4-models/errors-model';
 import ProductModel from '../4-models/product-model';
 
+async function isNameExits(name: string): Promise<boolean> {
+  const sql = `
+  SELECT ProductName
+  FROM products 
+  WHERE ProductName = '${name}'
+  `;
+  const products = await dal.execute(sql);
+  return products.length > 0;
+}
+
 async function getAllProducts(): Promise<ProductModel[]> {
   const sql = `
     SELECT
@@ -28,10 +38,23 @@ async function getOneProduct(id: number): Promise<ProductModel> {
     `;
   const products = await dal.execute(sql);
   const product = products[0];
-  return product;
   if (!product) {
     throw new ResourceNotFoundError(id);
   }
+  return product;
+}
+
+async function getRange(min: number, max: number): Promise<ProductModel[]> {
+  const sql = `
+  SELECT 
+  ProductID AS id,
+    ProductName AS name,
+    UnitPrice AS price,
+    UnitsInStock as stock
+    FROM products
+    WHERE UnitPrice BETWEEN ${min} AND ${max}`;
+  const products = await dal.execute(sql);
+  return products;
 }
 
 async function addProduct(product: ProductModel): Promise<ProductModel> {
@@ -39,6 +62,11 @@ async function addProduct(product: ProductModel): Promise<ProductModel> {
   if (errors) {
     throw new ValidationError(errors);
   }
+
+  if (await isNameExits(product.name)) {
+    throw new ValidationError(`name '${product.name}' already exists`);
+  }
+
   const sql = `
   INSERT INTO 
   products(ProductName, UnitPrice, UnitsInStock)
@@ -82,15 +110,19 @@ async function updateParitalProduct(product: ProductModel): Promise<ProductModel
 }
 
 async function deleteProduct(id: number): Promise<void> {
-  const sql = `
-  DELETE FROM 
-  products 
-  WHERE ProductID = ${id}
-  `;
+  const sql = `DELETE FROM products WHERE ProductID = ${id}`;
   const result = await dal.execute(sql);
   if (result.affectedRows === 0) {
     throw new ResourceNotFoundError(id);
   }
 }
 
-export default { getAllProducts, getOneProduct, addProduct, updateFullProduct, updateParitalProduct, deleteProduct };
+export default {
+  getAllProducts,
+  getOneProduct,
+  getRange,
+  addProduct,
+  updateFullProduct,
+  updateParitalProduct,
+  deleteProduct,
+};

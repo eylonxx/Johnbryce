@@ -1,3 +1,4 @@
+import e from 'express';
 import express, { NextFunction, Request, Response } from 'express';
 import { request } from 'http';
 import ProductModel from '../4-models/product-model';
@@ -24,6 +25,17 @@ router.get('/products/:id', async (req: Request, res: Response, next: NextFuncti
   }
 });
 
+router.get('/products-by-range/:min/:max', async (req, res, next) => {
+  try {
+    const min = +req.params.min;
+    const max = +req.params.max;
+    const products = await productsLogic.getRange(min, max);
+    res.json(products);
+  } catch (e: any) {
+    next(e);
+  }
+});
+
 router.post('/products', async (req: Request, res: Response, next: NextFunction) => {
   try {
     const product = new ProductModel(req.body);
@@ -40,7 +52,9 @@ router.put('/products/:id', async (req, res, next) => {
     const product = new ProductModel(req.body);
     const updatedproduct = await productsLogic.updateFullProduct(product);
     res.status(201).json(updatedproduct);
-  } catch (error) {}
+  } catch (e: any) {
+    next(e);
+  }
 });
 
 router.patch('/products/:id', async (req, res, next) => {
@@ -49,15 +63,19 @@ router.patch('/products/:id', async (req, res, next) => {
     const product = new ProductModel(req.body);
     const updatedproduct = await productsLogic.updateParitalProduct(product);
     res.status(201).json(updatedproduct);
-  } catch (error) {}
+  } catch (e: any) {
+    next(e);
+  }
 });
 
-router.delete('/products/:id', async (req, res, next) => {
+router.delete('/products/:id([0-9]+)', async (request: Request, response: Response, next: NextFunction) => {
   try {
-    const id = +req.params.id;
+    const id = +request.params.id;
     await productsLogic.deleteProduct(id);
-    res.status(204);
-  } catch (error) {}
+    response.sendStatus(204);
+  } catch (err: any) {
+    next(err);
+  }
 });
 
 export default router;
