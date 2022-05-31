@@ -3,6 +3,7 @@ import dal from '../2-utils/dal';
 import { ResourceNotFoundError, ValidationError } from '../4-models/errors-model';
 import ProductModel from '../4-models/product-model';
 import { v4 as uuid } from 'uuid';
+import fs from 'fs/promises';
 
 async function isNameExits(name: string): Promise<boolean> {
   const sql = `
@@ -54,6 +55,7 @@ async function getRange(min: number, max: number): Promise<ProductModel[]> {
     ProductName AS name,
     UnitPrice AS price,
     UnitsInStock as stock
+    imageName
     FROM products
     WHERE UnitPrice BETWEEN ${min} AND ${max}`;
   const products = await dal.execute(sql);
@@ -93,16 +95,31 @@ async function updateFullProduct(product: ProductModel): Promise<ProductModel> {
   if (errors) {
     throw new ValidationError(errors);
   }
+
+  if (product.image) {
+    const dotIndex = product.image.name.lastIndexOf('.');
+    const fileExtension = product.image.name.substring(dotIndex);
+    product.imageName = uuid() + fileExtension;
+    await product.image.mv('./src/1-assets/images' + product.imageName);
+    delete product.image;
+  }
+
   const sql = `
   UPDATE 
   products
-  SET ProductName = '${product.name}', UnitPrice = ${product.price}, UnitsInStock = ${product.stock}
+  SET ProductName = '${product.name}', 
+  UnitPrice = ${product.price}, 
+  UnitsInStock = ${product.stock}, 
+  imageName = '${product.imageName}'
   WHERE ProductID = ${product.id}
   `;
   const result: OkPacket = await dal.execute(sql);
   if (result.affectedRows === 0) {
     throw new ResourceNotFoundError(product.id);
   }
+
+  //delete prev img
+
   return product;
 }
 async function updateParitalProduct(product: ProductModel): Promise<ProductModel> {
@@ -121,6 +138,8 @@ async function updateParitalProduct(product: ProductModel): Promise<ProductModel
 }
 
 async function deleteProduct(id: number): Promise<void> {
+  //delete prev img
+
   const sql = `DELETE FROM products WHERE ProductID = ${id}`;
   const result = await dal.execute(sql);
   if (result.affectedRows === 0) {

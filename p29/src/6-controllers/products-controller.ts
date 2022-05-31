@@ -1,8 +1,9 @@
-import e from 'express';
 import express, { NextFunction, Request, Response } from 'express';
 import { request } from 'http';
+import path from 'path';
 import ProductModel from '../4-models/product-model';
 import productsLogic from '../5-logic/products-logic';
+import fs from 'fs';
 
 const router = express.Router();
 
@@ -78,6 +79,16 @@ router.delete('/products/:id([0-9]+)', async (request: Request, response: Respon
   } catch (err: any) {
     next(err);
   }
+});
+
+router.get('/products/images/:imageName', async (request: Request, response: Response, next: NextFunction) => {
+  try {
+    const imageName = request.params.imageName;
+    const absolutePath = path.join(__dirname, '..', '1-assets', 'images', imageName);
+    if (fs.existsSync(absolutePath)) {
+      response.sendFile(absolutePath);
+    }
+  } catch (error) {}
 });
 
 export default router;
