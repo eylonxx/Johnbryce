@@ -25,7 +25,7 @@ router.get('/products/:id', async (req: Request, res: Response, next: NextFuncti
   }
 });
 
-router.get('/products-by-range/:min/:max', async (req, res, next) => {
+router.get('/products-by-range/:min/:max', async (req: Request, res: Response, next: NextFunction) => {
   try {
     const min = +req.params.min;
     const max = +req.params.max;
@@ -38,6 +38,8 @@ router.get('/products-by-range/:min/:max', async (req, res, next) => {
 
 router.post('/products', async (req: Request, res: Response, next: NextFunction) => {
   try {
+    req.body.image = req.files?.image;
+
     const product = new ProductModel(req.body);
     const addedproduct = await productsLogic.addProduct(product);
     res.status(201).json(addedproduct);
@@ -46,7 +48,7 @@ router.post('/products', async (req: Request, res: Response, next: NextFunction)
   }
 });
 
-router.put('/products/:id', async (req, res, next) => {
+router.put('/products/:id', async (req: Request, res: Response, next: NextFunction) => {
   try {
     req.body.id = req.params.id;
     const product = new ProductModel(req.body);
@@ -57,7 +59,7 @@ router.put('/products/:id', async (req, res, next) => {
   }
 });
 
-router.patch('/products/:id', async (req, res, next) => {
+router.patch('/products/:id', async (req: Request, res: Response, next: NextFunction) => {
   try {
     req.body.id = req.params.id;
     const product = new ProductModel(req.body);

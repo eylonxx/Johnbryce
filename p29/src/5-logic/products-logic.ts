@@ -2,6 +2,7 @@ import { OkPacket } from 'mysql';
 import dal from '../2-utils/dal';
 import { ResourceNotFoundError, ValidationError } from '../4-models/errors-model';
 import ProductModel from '../4-models/product-model';
+import { v4 as uuid } from 'uuid';
 
 async function isNameExits(name: string): Promise<boolean> {
   const sql = `
@@ -19,7 +20,8 @@ async function getAllProducts(): Promise<ProductModel[]> {
     ProductID AS id,
     ProductName AS name,
     UnitPrice AS price,
-    UnitsInStock as stock
+    UnitsInStock as stock,
+    imageName
     FROM products
     `;
   const products = await dal.execute(sql);
@@ -33,6 +35,7 @@ async function getOneProduct(id: number): Promise<ProductModel> {
     ProductName AS name,
     UnitPrice AS price,
     UnitsInStock as stock
+    imageName
     FROM products
     WHERE ProductID = ${id}
     `;
@@ -67,10 +70,18 @@ async function addProduct(product: ProductModel): Promise<ProductModel> {
     throw new ValidationError(`name '${product.name}' already exists`);
   }
 
+  if (product.image) {
+    const dotIndex = product.image.name.lastIndexOf('.');
+    const fileExtension = product.image.name.substring(dotIndex);
+    product.imageName = uuid() + fileExtension;
+    await product.image.mv('./src/1-assets/images' + product.imageName);
+    delete product.image;
+  }
+
   const sql = `
   INSERT INTO 
-  products(ProductName, UnitPrice, UnitsInStock)
-  VALUES('${product.name}', ${product.price}, ${product.stock})
+  products(ProductName, UnitPrice, UnitsInStock, imageName)
+  VALUES('${product.name}', ${product.price}, ${product.stock}, '${product.imageName}')
   `;
   const result: OkPacket = await dal.execute(sql);
   product.id = result.insertId;

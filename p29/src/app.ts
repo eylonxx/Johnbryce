@@ -2,10 +2,11 @@ import express from 'express';
 import controller from './6-controllers/products-controller';
 import catchAll from './3-middleware/catch-all';
 import { RouteNotFoundError } from './4-models/errors-model';
-
+import expressFileUpload from 'express-fileupload';
 const server = express();
 
 server.use(express.json());
+server.use(expressFileUpload());
 server.use('/api', controller);
 
 //route not found
