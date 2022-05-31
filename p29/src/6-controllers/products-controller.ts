@@ -42,4 +42,22 @@ router.put('/products/:id', async (req, res, next) => {
     res.status(201).json(updatedproduct);
   } catch (error) {}
 });
+
+router.patch('/products/:id', async (req, res, next) => {
+  try {
+    req.body.id = req.params.id;
+    const product = new ProductModel(req.body);
+    const updatedproduct = await productsLogic.updateParitalProduct(product);
+    res.status(201).json(updatedproduct);
+  } catch (error) {}
+});
+
+router.delete('/products/:id', async (req, res, next) => {
+  try {
+    const id = +req.params.id;
+    await productsLogic.deleteProduct(id);
+    res.status(204);
+  } catch (error) {}
+});
+
 export default router;
