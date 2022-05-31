@@ -105,7 +105,7 @@ async function updateParitalProduct(product: ProductModel): Promise<ProductModel
       dbProduct[prop] = product[prop];
     }
   }
-  const updatedProduct = await updateFullProduct(dbProduct);
+  const updatedProduct = await updateFullProduct(new ProductModel(dbProduct));
   return updatedProduct;
 }
 
