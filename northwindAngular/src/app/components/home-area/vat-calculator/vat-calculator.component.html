@@ -1,0 +1,6 @@
+<div>
+  <label for="price">Price</label>
+  <input [(ngModel)]="price" type="number" id="price">
+  <button (click)="displayPrice()">search</button>
+  <p>{{this.getVat()}}</p>
+</div>

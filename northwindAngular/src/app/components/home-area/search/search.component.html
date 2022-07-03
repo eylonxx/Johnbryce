@@ -1,0 +1,6 @@
+<div>
+  <label [title]="tooltip" for="search">Search</label>
+  <input [(ngModel)]="textToSearch" type="search" id="search">
+  <button (click)="search()">search</button>
+  <p>{{textToSearch}}</p>
+</div>
