@@ -6,19 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./vat-calculator.component.css'],
 })
 export class VatCalculatorComponent implements OnInit {
-  public price: string = '';
+  public price: number = 0;
+  public vat: number = 0;
 
   constructor() {}
 
   ngOnInit(): void {}
-
-  public getVat(): number {
-    const vat = +this.price * 2;
-    return vat;
+  public calc(): void {
+    this.vat = this.price * 0.17;
   }
 
   public displayPrice(): void {
-    alert(`Price is ${this.price}, VAT is ${this.getVat()}`);
-    this.price = '';
+    alert(`Price is ${this.price}, VAT is ${this.vat}`);
   }
 }
