@@ -1,6 +1,10 @@
-<div>
-  <label for="price">Price</label>
-  <input [(ngModel)]="price" type="number" id="price" (ngModelChange)="calc()">
-  <button (click)="displayPrice()">search</button>
-  <p>{{vat}}</p>
+<div class="box">
+
+    <label>Enter price: </label>
+    <input type="number" [(ngModel)]="price" (ngModelChange)="calc()" />
+
+    <span>Vat: {{vat | currency:"ILS"}}</span>
+
+    <button (click)="display()">📜</button>
+
 </div>

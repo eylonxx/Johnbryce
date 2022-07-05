@@ -6,15 +6,15 @@ import { PageNotFoundComponent } from './components/layout-area/page-not-found/p
 import { ProductListComponent } from './components/products-area/product-list/product-list.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: 'procuts', component: ProductListComponent },
-  { path: 'about', component: AboutComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: '**', component: PageNotFoundComponent },
+    { path: "home", component: HomeComponent },
+    { path: "products", component: ProductListComponent },
+    { path: "about", component: AboutComponent },
+    { path: "", redirectTo: "home", pathMatch: "full" },
+    { path: "**", component: PageNotFoundComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
